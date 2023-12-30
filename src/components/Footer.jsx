@@ -3,7 +3,7 @@ import './footer.css'
 function Footer() {
   return (
     <>
-       <div className='parent bg-dark'>
+       <div className='parent mt-5'>
           <div className="site-footer">
         <div className="container">
           <div className="row">

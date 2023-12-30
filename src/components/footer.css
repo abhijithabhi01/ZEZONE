@@ -1,12 +1,12 @@
 .parent {
-  position: relative;
   height: 100vh;
+  position: relative;
 }
 
 .site-footer
 {
+position: absolute;
   width: 100%;
-  position: absolute;
    bottom: 0;
   background-image: url(../Assests/milad-fakurian-E8Ufcyxz514-unsplash.jpg);
   background-size: cover;

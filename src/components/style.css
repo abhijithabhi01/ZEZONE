@@ -79,14 +79,11 @@
 .division-second {
 
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 43%;
+    margin-top: 48%;
     height: 100vh;
     overflow:scroll;
     scrollbar-width: none;
-    background-image: linear-gradient(45deg,rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.411)),url(../Assests/boliviainteligente-DpOGOw_avns-unsplash.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  
 }
 .division-second::-webkit-scrollbar{
   display: none;
@@ -193,3 +190,122 @@
       width: 100%;
     }
   }
+
+
+
+  /* review card */
+  .reviewcard {
+    width: 190px;
+    height: 254px;
+    margin: 10px;
+    background: rgb(103, 225, 255);
+    transition: all 0.4s;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    font-size: 30px;
+    font-weight: 900;
+    position: relative;
+    display: inline-block;
+  }
+
+  .reviewcard:hover {
+    border-radius: 15px;
+    cursor: pointer;
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px 5px  rgba(0, 0, 0, 0.705);
+    background: rgb(0, 0, 0);
+  }
+ .first-content img{
+  display: block;
+ }
+ .review-head{
+  font-size: 17px;
+  background-color: white;
+  font-weight: bolder;
+  position: absolute;
+  top: 70%;
+  left: 50%; 
+  transform: translate(-50%, 240%);
+  text-align: center;
+}
+  .first-content {
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    border-radius: 15px;
+      font-size: 1.8rem;
+      contain: content;
+  }
+
+  .reviewcard:hover .first-content {
+    height: 0px;
+    opacity: 0;
+  }
+  
+  .second-content {
+    height: 0%;
+    width: 100%;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    transition: all 0.4s;
+    font-size: 0px;
+    transform: rotate(0deg) scale(1);
+  }
+  
+  .reviewcard:hover .second-content {
+    opacity: 1;
+    height: 100%;
+    font-size: 1rem;
+    transform: rotate(0deg);
+  }
+  .reviewcard-srolldiv{
+    overflow: auto;
+  }
+
+  /* carosual */
+  .carousel{
+    height: 40vh;  
+    width: 100%;
+    overflow: scroll;
+  }
+  .carousel::-webkit-scrollbar{
+    display: none;
+  }
+ .carousel-innerdiv h1{
+font-size: 20px;
+color: white;
+ }
+ .carousel-control-prev{
+  visibility: hidden;
+ }
+ .carousel-control-next{
+  visibility: hidden;
+ }
+.carousel-indicators button{
+  cursor: pointer;
+border-radius: 50px;  
+&.active{
+  background: #22a550;
+}
+}
+ /* division-four */
+ .division-four{
+  height: 100vh;
+  text-align: left;
+  background: url(../Assests/milad-fakurian-E8Ufcyxz514-unsplash.jpg);
+ }
+ 
+ .div-four-inn h5{
+  font-size: 30px;
+ }
+ .div-four-inn h1{
+  font-size: 50px;
+ }
