@@ -1,0 +1,195 @@
+.typewriter {
+    font-size: 50%;
+    overflow: hidden; /* Hide overflow */
+  /* Cursor effect */
+    white-space: nowrap; /* Avoid line breaks */
+    margin: 0 auto; /* Center the text */
+    letter-spacing: .15em; /* Adjust letter spacing */
+    animation: typing 8s steps(40) ; /* Typing animation */
+    color: #000503;
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  .heading1{
+    position: absolute;
+    top: -100px; /* Initial position off the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3em;
+    animation: dropFromTop 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+  }
+  
+  @keyframes dropFromTop {
+    0% {
+      top: -150px;
+      opacity: 0; /* Start with opacity 0 */
+    }
+    100% {
+      top: 150px; /* Move to a desired position */
+      opacity: 1; /* Show the text */
+    }
+  }
+
+  /*  */
+.startButton {
+    padding: 0.8em 1.8em;
+    border: 2px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #e6ac0b;
+    
+   }
+   
+   .startButton::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #ab0b0b;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   .startButton:hover::before {
+    width: 105%;
+   }
+
+   /* auth */
+   .auth-form {
+    border-radius: 30px;
+    box-shadow: 2px 5px 5px #e1a3a3,
+               -5px -2px 10px #817070;
+   }
+  
+.division-second {
+
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 43%;
+    height: 100vh;
+    overflow:scroll;
+    scrollbar-width: none;
+    background-image: linear-gradient(45deg,rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.411)),url(../Assests/boliviainteligente-DpOGOw_avns-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.division-second::-webkit-scrollbar{
+  display: none;
+}
+.division-second div p span{
+   font-size: 30px;
+   text-shadow:2px 2px rgb(12, 3, 3);
+}
+.division-third-main {
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.411)), url('../Assests/boliviainteligente-DpOGOw_avns-unsplasheee.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  width: fit-content;
+  height: fit-content; /* Changed block-size to height for better clarity */
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.division-third-main::-webkit-scrollbar {
+  display: none;
+}
+
+.division-third {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+/* card  */
+.division-third-card {
+    margin: 20px;
+    max-width: 300px; 
+    width: 100%;
+    position: relative;
+    width: 33.33%; 
+    height: 30vh;
+    background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    scrollbar-width: none;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .division-third-card img {
+    width: 100%;
+   height:100%;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .division-third-card:hover {
+    transform:scale(1.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .division-third-card:hover .card__content {
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 1;
+  }
+  
+  .card__title {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .card__description {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: #ff0202;
+    line-height: 1.4;
+  }
+  
+  
+  
+  @media (max-width: 768px) {
+    .division-third-card {
+      width: 50%;
+    }
+  }
+  
+  /* Go to 1 column on very small screens */ 
+  @media (max-width: 576px) {
+    .division-third-card {
+      width: 100%;
+    }
+  }
