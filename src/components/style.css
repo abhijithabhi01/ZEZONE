@@ -1,5 +1,26 @@
+::-webkit-scrollbar{
+  width: 2px;
+}
+::-webkit-scrollbar-track{
+  background: #d1e5ff;
+  background: transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb{
+  width: 10%;
+  border-radius: 10px;
+}
+
+.nav-bar{
+  background: url(../Assests/milad-fakurian-d4lv5slqeqY-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
 .typewriter {
-    font-size: 50%;
+    font-size: 2vw;
     overflow: hidden; /* Hide overflow */
   /* Cursor effect */
     white-space: nowrap; /* Avoid line breaks */
@@ -16,23 +37,17 @@
 
   .heading1{
     position: absolute;
-    top: -100px; /* Initial position off the screen */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 3em;
-    animation: dropFromTop 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-  }
-  
-  @keyframes dropFromTop {
-    0% {
-      top: -150px;
-      opacity: 0; /* Start with opacity 0 */
-    }
-    100% {
-      top: 150px; /* Move to a desired position */
-      opacity: 1; /* Show the text */
-    }
-  }
+     }
+
+.head1 h1{
+  font-size: 10.4vw;
+  width: 100%;
+  color: transparent;
+  background: url('https://media.giphy.com/media/xTiTnx4rTU9kOPqpgs/giphy.gif');
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+}
+
 
   /*  */
 .startButton {
@@ -77,9 +92,11 @@
    }
   
 .division-second {
-
+  background: url(../Assests/milad-fakurian-d4lv5slqeqY-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    margin-top: 48%;
+    margin-top: 41.2%;
     height: 100vh;
     overflow:scroll;
     scrollbar-width: none;
@@ -93,12 +110,12 @@
    text-shadow:2px 2px rgb(12, 3, 3);
 }
 .division-third-main {
-  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.411)), url('../Assests/boliviainteligente-DpOGOw_avns-unsplasheee.jpg');
+
+ background: url(../Assests/boliviainteligente-DpOGOw_avns-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  width: fit-content;
-  height: fit-content; /* Changed block-size to height for better clarity */
+  height: 100vh;
   overflow: scroll;
   scrollbar-width: none;
 }
@@ -117,11 +134,11 @@
 /* card  */
 .division-third-card {
     margin: 20px;
-    max-width: 300px; 
+    max-width: 280px; 
     width: 100%;
     position: relative;
     width: 33.33%; 
-    height: 30vh;
+    height: 35vh;
     background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100% );
     border-radius: 10px;
     display: flex;
@@ -183,16 +200,19 @@
       width: 50%;
     }
   }
-  
-  /* Go to 1 column on very small screens */ 
-  @media (max-width: 576px) {
+    @media (max-width: 576px) {
     .division-third-card {
       width: 100%;
     }
   }
 
 
+.review-division{
+  background: url(../Assests/steve-johnson-TioQuYqFNhE-unsplash.jpg);
+  
+  background-size: cover;
 
+}
   /* review card */
   .reviewcard {
     width: 190px;
@@ -269,7 +289,12 @@
   .reviewcard-srolldiv{
     overflow: auto;
   }
-
+.reviewcard-srolldiv:hover::-webkit-scrollbar-track{
+  background-color: white;
+}
+.reviewcard-srolldiv:hover::-webkit-scrollbar-thumb{
+  background-color: rgb(0, 0, 0);
+}
   /* carosual */
   .carousel{
     height: 40vh;  
@@ -293,14 +318,17 @@ color: white;
   cursor: pointer;
 border-radius: 50px;  
 &.active{
-  background: #22a550;
+  background: #000000;
 }
 }
  /* division-four */
  .division-four{
   height: 100vh;
+  width: 100%;
   text-align: left;
-  background: url(../Assests/milad-fakurian-E8Ufcyxz514-unsplash.jpg);
+  background: url(../Assests/simon-lee-zft-W1kVEhg-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
  }
  
  .div-four-inn h5{

@@ -5,7 +5,7 @@ function Carousal() {
   
   return (
     <>
-    <Carousel className='carousel bg-dark d-flex  justify-content-center align-items-center border rounded' >
+    <Carousel className='carousel bg-dark d-flex justify-content-center align-items-center border rounded' >
      
     <Carousel.Item className='carousel-innerdiv text-center p-5'>
        <h2>ZEZONE is my fitness companion! The fitness groups and challenges keep me motivated. It's a supportive space to share progress, learn new routines, and stay committed to a healthy lifestyle</h2>

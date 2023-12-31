@@ -1,0 +1,16 @@
+.post-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.post-col{
+    margin: 20px;
+    flex-grow: 1;
+    flex-basis: 200;
+}
+.profile-img{
+    height: 300px;
+    width: 250px;  
+    border: 5px solid black;
+    border-radius: 40px;
+}

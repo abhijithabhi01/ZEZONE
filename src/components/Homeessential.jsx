@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
 import Footer from '../components/Footer'
-import seconddivisionimage from '../Assests/nigel-tadyanehondo-o7BHcP8eRB8-unsplash.jpg'
 import { Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './style.css'
@@ -14,19 +13,21 @@ function Homeessential() {
   return (
     <>
          <div>
-    <Row className="section m-5" id='home'>
-        <Col md={12} className="heading1 ">
-            <h1 className="ms-3" style={{fontSize:"10vw",fontFamily:"'Josefin Sans'"}}>ZEZONE</h1>
+    <div className="section m-5" id='home'>
+        <div className="heading1 ">
+           <div className='head1'> 
+           <h1 className="ms-3" style={{fontFamily:"'Josefin Sans'"}}>ZEZONE</h1></div>
             <p className='typewriter ms-3'>Connecting People</p>
-        </Col>
-    </Row>
+        </div>
+       
+    </div>
 </div>
 <div>
   
-  <div id='about' className='division-second p-2 '>
+  <div id='about' className='division-second p-2'>
   <div className='d-flex justify-content-between position-static'>
     <h1 style={{color:"orange"}}>Connecting People</h1>
-    <button className='startButton btn text-right btn-dark rounded'><Link className='text-decoration-none' to={'/login'}>Start Now</Link></button>
+    <button className='startButton btn text-right btn-light rounded'><Link className='text-decoration-none' to={'/login'}>Start Now</Link></button>
   </div>
       <div className='p-5 scrollparagraph'> 
         <p className="text-justify" style={{fontSize:'30px',color:"white"}}>
@@ -45,7 +46,7 @@ function Homeessential() {
       </div>
       </div>
   
-    <div id='features' className='division-third-main' style={{height:'100vh'}}> 
+    <div id='features' className='division-third-main'> 
     <div><h1 className='m-5 text-center text-light'style={{fontSize:'50px'}}>WE PROVIDE</h1></div>
     <div className='division-third'>
      
@@ -92,10 +93,10 @@ function Homeessential() {
 </div>
 
 
-<div className='h-100 m-3 mt-5'>
+<div className='review-division h-100 '>
   <div><h1 className='text-center mt-1 text-light'>Thoughts About ZEZONE</h1></div>
 
-    <div className='reviewcard-srolldiv d-flex p-1 ms-auto' style={{}}>
+    <div className='reviewcard-srolldiv d-flex p-3 ms-auto' style={{}}>
 
       <div className='m-2'>
       <div class="reviewcard">
@@ -367,17 +368,17 @@ function Homeessential() {
     </div>
 
 <div className='m-5'> <Carousal/></div>
-
+</div>
    <div className='division-four'>
-      <div className='p-5 mt-5'>
+      <div className='p-5'>
         <div className='div-four-inn m-1 p-2 mt-5'><h5>A New Way To Connect With World</h5></div>
         <div className='div-four-inn m-1 p-2 mt-1'><h1>Start Using Today<br></br>Create New Account Now</h1></div>
-        <div className='m-1 p-2'> <button className='startButton btn text-right btn-dark rounded'><Link className='text-decoration-none' to={'/register'}>Create</Link></button>
+        <div className='m-1 p-2'> <button className='startButton btn text-right btn-secondary rounded'><Link className='text-decoration-none' to={'/register'}>Create</Link></button>
   </div>
       </div>
    </div>
    <Footer/>
-</div>
+
 
 
     </>
