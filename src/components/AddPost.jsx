@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
+import './style2.css'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 
 function AddPost() {
+// modal
+const [show, setShow] = useState(false);
+
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+
+
+
+
+
   return (
     <>
         
@@ -8,43 +22,42 @@ function AddPost() {
 
 
 
-        <div className="main">
-        <div className="container a-container" id="a-container">
-          <form className="form" id="a-form" method="post" action="signup.php">
-            <h2 className="form_title title">Create Account</h2>
-            <input className="form__input" type="text" placeholder="Name" name="username" />
-            <input className="form__input" type="text" placeholder="Email" name="email" />
-            <input className="form__input" type="password" placeholder="Password" name="password" />
-            <button className="form__button button switch-btn" type="submit" name="signup">SIGN UP</button>
-          </form>
-        </div>
-        <div className="container b-container" id="b-container">
-          <form className="form" id="b-form" method="post" action="index.html">
-            <h2 className="form_title title">Sign in to Website</h2>
-            <input className="form__input" type="text" placeholder="Email" name="email" />
-            <input className="form__input" type="password" placeholder="Password" name="password" />
-            <button className="form__button button switch-btn" name="signin">SIGN IN</button>
-          </form>
-        </div>
-        <div className="switch" id="switch-cnt">
-          <div className="switch__circle" />
-          <div className="switch__circle switch__circle--t" />
-          <div className="switch__container" id="switch-c1">
-            <h2 className="switch__title title">Welcome Back !</h2>
-            <p className="switch__description description">To keep connected with us please login with your personal info</p>
-            <button className="switch__button button switch-btn">GO TO SIGN IN</button>
-          </div>
-          <div className="switch__container is-hidden" id="switch-c2">
-            <h2 className="switch__title title">Hello Friend !</h2>
-            <p className="switch__description description">Enter your personal details and start journey with us</p>
-            <button className="switch__button button switch-btn">GO TO SIGN UP</button>
-          </div>
-        </div>
-      </div>
+        <div className="addpost m-5" onClick={handleShow}>
+  <div className='first-content'><i class="fa-solid fa-plus  fa-lg "></i></div>
+  <div className='second-content text-center'><button className='btn fs-2'>ADD POST</button></div>
+</div>
   
 
 
+ {/* modal */}
+ <Modal show={show} onHide={handleClose}  centered>
+        <Modal.Header closeButton>
+          <Modal.Title>ADD POST</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='bg-primary'>
+          <div className=''>
+            
+            <div className='addpost-modal text-center bg-dark'><i class="fa-solid fa-plus  fa-2xl" style={{fontSize:"80px"}}></i></div>
+            <input type="text" placeholder='caption'className='caption-box text-light mt-3'/>
 
+          </div>
+
+        </Modal.Body>
+
+
+
+
+
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
         
     </>
   )

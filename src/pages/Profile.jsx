@@ -1,12 +1,14 @@
 import React from 'react'
 import Dashboard from '../components/Dashboard'
+import HomeNavbar from '../components/HomeNavbar'
 
 function Profile() {
   return (
-    <div>
+    <>
+      <HomeNavbar/>
       <Dashboard/>
    
-    </div>
+    </>
   )
 }
 

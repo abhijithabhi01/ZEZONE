@@ -179,7 +179,7 @@ function Homeessential() {
       <div class="reviewcard">
   <div class="first-content">
      <img src="https://media.istockphoto.com/id/1156760847/photo/dream-flowers-princess.jpg?s=612x612&w=0&k=20&c=-QL7tdtQjmkmlPJaPJYzSSXsMCCw3wXz2bvZlDMVrA0=" alt="" />
-    <h1 class="review-head">ArtisticSoul22</h1>
+    <h1 class="review-head">Alice</h1>
   </div>
   <div class="second-content">
     <p>ZEZONE is more than a social app; it's my book club! The groups and discussions here about literature are fantastic. I've discovered so many new books and made friends who share my passion for reading</p>
@@ -367,7 +367,7 @@ function Homeessential() {
       
     </div>
 
-<div className='m-5'> <Carousal/></div>
+<div className='m-3'> <Carousal/></div>
 </div>
    <div className='division-four'>
       <div className='p-5'>
@@ -376,6 +376,7 @@ function Homeessential() {
         <div className='m-1 p-2'> <button className='startButton btn text-right btn-secondary rounded'><Link className='text-decoration-none' to={'/register'}>Create</Link></button>
   </div>
       </div>
+      <div className='ms-2'><button  className='btn text-right btn-primary rounded' style={{position:'absolute',bottom:'10px',right:'10px'}}><i class="fa-solid fa-arrow-up fa-bounce fa-xl"></i></button></div>
    </div>
    <Footer/>
 

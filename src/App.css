@@ -1,6 +1,8 @@
 body{
-    background-image: url(./Assests/boliviainteligente-DpOGOw_avns-unsplash.jpg);
-    
+    background: url('./Assests/simon-lee-zft-W1kVEhg-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     scroll-behavior: smooth;
 }
 
