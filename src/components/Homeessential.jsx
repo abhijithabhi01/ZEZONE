@@ -1,27 +1,76 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Collapse from 'react-bootstrap/Collapse';
 import Footer from '../components/Footer'
 import { Button, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './style.css'
 import Carousal from './Carousal';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 function Homeessential() {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [show, setShow] = useState(false);
 
+
+
+  
+  const[token,setToken] = useState(false)
+ 
+  useEffect(()=>{
+    if(sessionStorage.getItem('token')){
+      setToken(true)
+    }
+  },[])
   return (
     <>
-         <div>
-    <div className="section m-5" id='home'>
-        <div className="heading1 ">
-           <div className='head1'> 
-           <h1 className="ms-3" style={{fontFamily:"'Josefin Sans'"}}>ZEZONE</h1></div>
-            <p className='typewriter ms-3'>Connecting People</p>
-        </div>
-       
-    </div>
+{token ||
+ <div className='navbar d-flex justify-content-between bg-primary'>
+ <div className='ms-2'><button className='btn text-right btn-light rounded'><Link className='text-decoration-none' to={'/login'}>LOGIN</Link></button></div>
+
+ <div className='mb-5 bg-primary' id='settingsicon'>
+
+        <Dropdown>
+      <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',}}>
+      <button type='button' className='btn' ><i class="fa-solid fa-bars fa-2xl text-light bg-primary" 
+   
+  ></i></button>
+      </Dropdown.Toggle>
+
+      <Dropdown.Menu style={{maxHeight:'100vh'}}>
+      <div className='text-center hrefdiv'>
+    <h2 className='m-4 hovertored'><a href='#home'>Home</a></h2>
+    <h2 className='m-4 hovertored'><a href='#about'>About</a></h2>
+    <h2 className='m-4 hovertored'><a href='#features'>Features</a></h2>
+    <h2 className='m-4 hovertored'><a href='#contact'>contact</a></h2>
+    <h2 className='m-4 hovertored'><a href='#register'>Register</a></h2>
+    <h2 className='m-4 hovertored'><Link to={'/login'}>Login</Link></h2>
+  </div>
+      </Dropdown.Menu>
+    </Dropdown>
+
 </div>
+
+</div>
+}
+
+
+
+
+        <section id='home'>
+           <div>
+      <div className="section m-5" id='home'>
+          <div className="heading1 ">
+             <div className='head1'> 
+             <h1 className="ms-3" style={{fontFamily:"'Josefin Sans'"}}>ZEZONE</h1></div>
+              <p className='typewriter ms-3'>Connecting People</p>
+          </div>
+         
+      </div>
+  </div>
+        </section>
 <div>
   
   <div id='about' className='division-second p-2'>
@@ -369,16 +418,18 @@ function Homeessential() {
 
 <div className='m-3'> <Carousal/></div>
 </div>
-   <div className='division-four'>
-      <div className='p-5'>
-        <div className='div-four-inn m-1 p-2 mt-5'><h5>A New Way To Connect With World</h5></div>
-        <div className='div-four-inn m-1 p-2 mt-1'><h1>Start Using Today<br></br>Create New Account Now</h1></div>
-        <div className='m-1 p-2'> <button className='startButton btn text-right btn-secondary rounded'><Link className='text-decoration-none' to={'/register'}>Create</Link></button>
-  </div>
-      </div>
-      <div className='ms-2'><button  className='btn text-right btn-primary rounded' style={{position:'absolute',bottom:'10px',right:'10px'}}><i class="fa-solid fa-arrow-up fa-bounce fa-xl"></i></button></div>
-   </div>
-   <Footer/>
+<section id='register'>
+     <div className='division-four'>
+        <div className='p-5'>
+          <div className='div-four-inn m-1 p-2 mt-5'><h5>A New Way To Connect With World</h5></div>
+          <div className='div-four-inn m-1 p-2 mt-1'><h1>Start Using Today<br></br>Create New Account Now</h1></div>
+          <div className='m-1 p-2'> <button className='startButton btn text-right btn-secondary rounded'><Link className='text-decoration-none' to={'/register'}>Create</Link></button>
+    </div>
+        </div>
+        <div className='ms-2'><a href='#home' className='btn text-right btn-primary rounded' style={{position:'absolute',bottom:'10px',right:'10px'}}><i class="fa-solid fa-arrow-up fa-bounce fa-xl"></i></a></div>
+     </div>
+</section>
+  <section id='contact'> <Footer/></section>
 
 
 

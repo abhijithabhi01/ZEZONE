@@ -43,7 +43,7 @@
   font-size: 12vw;
   width: 100%;
   color: transparent;
-  background: url('https://media1.giphy.com/media/3o6ZsVGl3vuG5g0Kic/200w.webp?cid=ecf05e4756gctso2wp8yi8ukqt4e4tu3elczwcg04qo4rab9&ep=v1_gifs_search&rid=200w.webp&ct=g');
+  background: url('../Assests/smokegif.webp');
   -webkit-background-clip: text;
   -moz-background-clip: text;
 }
@@ -86,7 +86,7 @@
 
    /* auth */
    .auth{
-    background: url(../Assests/boliviainteligente-DpOGOw_avns-unsplash.jpg);
+    background-color: #333;
 
    }
    .auth-form {
@@ -210,11 +210,13 @@
     .division-third-card {
       width: 50%;
     }
+  
   }
     @media (max-width: 576px) {
     .division-third-card {
       width: 100%;
     }
+ 
   }
 
 
@@ -359,23 +361,99 @@ border-radius: 50px;
   text-align: center;
   z-index: 0;
  }
+
+
+
+
+
+ .search{
+  object-fit: cover;
+ }
  .magnifying-glass{
   margin-top: 8px;
   font-size: 30px;
   z-index: 1;
   margin-right: -18%;
  }
- @media screen and (max-width: 512px) {
+ @media screen and (max-width: 560px) {
   .magnifying-glass{
     visibility: hidden;
    }
    .search{
     margin-left: 40px;
   }
+  .search input:focus{
+   width: 80%;
   }
-  .navbar{
-    background: url('../Assests/milad-fakurian-d4lv5slqeqY-unsplash.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+
   }
+
+
+ @media screen and (max-width: 540px) {
+  .usrlogbtn button{
+    width: 350%;   
+  }
+  .nav1{
+    margin: 10px;
+  }
+
+}
+.usrlogbtn btn{
+  width: 100%;
+  background-color: #ffffff;
+ }
+ .example-collapse-text{
+  height: 100px;
+ }
+ .dropdown-menu{
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  }
+.closebtn button{
+
+
+}
+.hovertored a{
+  text-decoration: none;
+}
+.hovertored:hover a{
+  color: red;
+  text-decoration: underline;
+}
+.zezonehover:hover a{
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+.hovertored:hover h2{
+  color: red;
+  text-decoration: underline;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+@media only screen and (max-width: 992px) {
+#dropdown-basic{
+  margin-left: -15%;
+}
+}
+@media only screen and (min-width: 993px) {
+  #dropdown-basic{
+    margin-left: -8%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #dropdown-basic{
+    margin-left: -22%;
+    margin-top: -5%;
+  }
+}
+@media only screen and (max-width: 560px) {
+ .profile-btn,.profile-btn button{
+  width: 90vw;
+ }
+}

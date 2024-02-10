@@ -1,85 +1,152 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import './style2.css'
 import HomeNavbar from './HomeNavbar';
+import { dislikepostAPI, getallpostsAPI, getallusersAPI, likepostAPI } from '../Services/allAPI';
+import { BASE_URL } from '../Services/baseurl';
 
 function UserHome() {
+  const [open, setOpen] = useState(false);
+  const[alluserposts,setalluserposts] = useState([])
+  const[allusers,setallusers] = useState([])
+
+  const [showComments, setShowComments] = useState(false);
+
+  const toggleComments = () => {
+    setShowComments(!showComments);
+  };
+
+  const cardStyle = {
+    backgroundColor: showComments ? 'black' : 'white',
     
+  };
+const pdivstyle = {
+  opacity : showComments ? '0' : '1',
+}
+  const getallposts = async()=>{
+    if(sessionStorage.getItem("token")){
+      const token = sessionStorage.getItem("token")
+      const reqHeader = {
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+      }
+      const result = await getallpostsAPI(reqHeader)
+      if(result.status===200){
+        //console.log(result.data);
+        setalluserposts(result.data)
+        
+      }
+    }
+  }
+//console.log(alluserposts);
+
+  const getallusers = async()=>{
+    if(sessionStorage.getItem("token")){
+      const token = sessionStorage.getItem("token")
+      const reqHeader = {
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+      }
+      const result = await getallusersAPI(reqHeader)
+    if(result.status===200){
+      setallusers(result.data)
+      //console.log(result.data);
+      
+    }
+    }
+  }
+
+
+  //Dont remove this
+const userpostresult =[];
+
+alluserposts.forEach(obj1 => {
+  const usergotmatch = allusers.find(obj2 => obj1.userId === obj2._id)
+
+   if(usergotmatch){
+    userpostresult.push({
+      userId:usergotmatch._id,
+      username:usergotmatch.username,
+      postimage:obj1.postimage,
+      caption:obj1.caption
+    })
+   }
+})
+
+//console.log(userpostresult);
+
+useEffect(()=>{
+  getallposts()
+  getallusers()
+},[])
+
+
+
+// LIKE
+
+
+
+
   return (
     <>
     <HomeNavbar/>
+    
 <div className='div-userhome'>
     
-<div className='div-userhomesub'>
-         <Card className='div-userpost mt-5'>
-              <Card.Title ClassName='m-5'><h2>USERNAME</h2></Card.Title>
-            <div className='userpostimg mx-auto border border-primary rounded' >  <Card.Img variant="top"  src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=600" alt='ERROR404'/></div>
-              <Card.Body>
-              <div className="d-flex m-2 mb-3">
-                <i class="fa-regular fa-heart fa-2xl m-1"></i>
-              <i class="fa-regular fa-comment fa-2xl m-1 ms-4 mb-2"></i>
-              </div>
-                <Card.Text style={{overflow:'auto'}}>
-                 Some quick example text to build on the card title and make up the
-                 bulk of the card's content. Some quick example text to build on the card title and make up the
-                
-                </Card.Text>
-              
-              </Card.Body>
-            </Card>
 
-            <Card className='div-userpost mt-5'>
-              <Card.Title ClassName='m-5'><h2>USERNAME</h2></Card.Title>
-            <div className='userpostimg mx-auto border border-primary rounded' >  <Card.Img variant="top"  src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=600" alt='ERROR404'/></div>
-              <Card.Body>
-              <div className="d-flex m-2 mb-3">
-                <i class="fa-regular fa-heart fa-2xl m-1"></i>
-              <i class="fa-regular fa-comment fa-2xl m-1 ms-4 mb-2"></i>
-              </div>
-                <Card.Text style={{overflow:'auto'}}>
-                 Some quick example text to build on the card title and make up the
-                 bulk of the card's content. Some quick example text to build on the card title and make up the
-                
-                </Card.Text>
-              
-              </Card.Body>
-            </Card>
+    {userpostresult?.length>0? userpostresult.map((item)=>(
 
-            <Card className='div-userpost mt-5'>
-              <Card.Title ClassName='m-5'><h2>USERNAME</h2></Card.Title>
-            <div className='userpostimg mx-auto border border-primary rounded' >  <Card.Img variant="top"  src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=600" alt='ERROR404'/></div>
-              <Card.Body>
-              <div className="d-flex m-2 mb-3">
-                <i class="fa-regular fa-heart fa-2xl m-1"></i>
-              <i class="fa-regular fa-comment fa-2xl m-1 ms-4 mb-2"></i>
-              </div>
-                <Card.Text style={{overflow:'auto'}}>
-                 Some quick example text to build on the card title and make up the
-                 bulk of the card's content. Some quick example text to build on the card title and make up the
-                
-                </Card.Text>
-              
-              </Card.Body>
-            </Card>
-
-            <Card className='div-userpost mt-5'>
-              <Card.Title ClassName='m-5'><h2>USERNAME</h2></Card.Title>
-            <div className='userpostimg mx-auto border border-primary rounded' >  <Card.Img variant="top"  src="https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=600" alt='ERROR404'/></div>
-              <Card.Body>
-              <div className="d-flex m-2 mb-3">
-                <i class="fa-regular fa-heart fa-2xl m-1"></i>
-              <i class="fa-regular fa-comment fa-2xl m-1 ms-4 mb-2"></i>
-              </div>
-                <Card.Text style={{overflow:'auto'}}>
-                 Some quick example text to build on the card title and make up the
-                 bulk of the card's content. Some quick example text to build on the card title and make up the
-                
-                </Card.Text>
-              
-              </Card.Body>
-            </Card>
+<Card className='div-userpost ' style={cardStyle}>
+<div className={`pdivfirst-content p-2 ${showComments ? 'hidden' : ''}`}style={pdivstyle}>
+  <h2 className=''>{item.username}</h2>
+  <hr style={{ border: '1.5px solid black', width: '100%' }} />
+  <div className='userpostimg11'>
+    <div className='userpostimg mx-auto border border-primary rounded '>
+      <img src={userpostresult ? `${BASE_URL}/UserPosts/${item.postimage}` : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv1ank-wR_C1doFKGVu5XKmO5bg6RTaVub5A&usqp=CA"} alt='ERROR404' />
     </div>
-    
+  </div>
+  <hr style={{ border: '1.5px solid black', width: '100%' }} />
+  <div className="d-flex justify-content-start flex-start">
+  <button className='like ms-2 fs-2'
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+          <i class="fa-solid fa-thumbs-up"></i>
+           </button>
+           <button className='dislike ms-2 fs-2'
+          style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+          <i class="fa-solid fa-thumbs-down"></i>
+           </button>
+    <button className='btn comment-btn' onClick={toggleComments}><i className="fa-regular fa-comment fa-2xl text-primary"></i></button>
+  </div>
+  <h3 className='ms-4' style={{ overflow: 'hidden' }}>{item.caption}</h3>
+</div>
+{showComments && (
+ <div className='comment-box'>
+ <div className='d-flex justify-content-between m-3'>  
+   <h1 className='text-light'>Comments</h1>
+   <button onClick={toggleComments} className="btn fs-2 btn-white me-5">
+     <i className="fa-solid fa-x"></i>
+   </button>
+ </div>
+ <div className='comment-content ms-2'>
+   <div>
+     <p className='comment-paragraph'>delectus dolorem similique sed iure eos ea illo, officia id.</p>
+     <p className='comment-paragraph'>delectus dolorem similique sed iure eos ea illo, officia id.</p>
+     <p className='comment-paragraph'>delectus dolorem similique sed iure eos ea illo, officia id.</p>
+   </div>
+   <div className='comment-input'>
+     <input type="text" placeholder='reply here' className='reply-input-box text-center text-light '/>
+   </div>
+ </div>
+</div>
+
+)}
+</Card>
+
+    ))
+    :
+    <h1 className='d-flex flex-column text-center text-light' style={{fontSize:'40px'}}>Please be patient,data is loading</h1>
+    }
+
     
 </div>
     </>

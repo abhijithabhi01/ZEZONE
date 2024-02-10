@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './style.css'
 import { loginAPI, registerAPI } from '../Services/allAPI'
@@ -7,36 +7,48 @@ import 'react-toastify/dist/ReactToastify.css';
 function Auth({ register }) {
 
     const navigate = useNavigate()
-
+    const [preview, setpreview] = useState("")
     const[userData,setuserData] = useState({
         username:"",
         email:"",
-        password:""
+        password:"",
+      
     }) 
-    //console.log(userData)
+
+// console.log(userData);
+//     useEffect(() => {
+//         if (userData.profileimage) {
+//           setpreview(URL.createObjectURL(userData.profileimage))
+//         }
+//       }, [userData.profileimage])
+    
+
 // register
 const handleRegister = async (e)=>{
     e.preventDefault()
     const {username,email,password} = userData
 
     if(!username || !email || !password){
-        toast.info('Please Fill the form Completely')
+        toast.info('Something is missing!')
     }
     else{
         const result = await registerAPI(userData)
        // console.log(result);
        if(result.status==200){
-        toast.success(`${result.data.username},sucessfully Registered`)
-        setuserData({
-            username:"",
-            email:"",
-            password:""
-        })
+        toast.success(`Account Registered`)
+        
         navigate('/login')
        }
        else{
-        toast.error(`Something went Wrong,Please try after some time`)
+        toast.error(`${result.response.data}`)
+        setuserData({
+            username:"",
+            email:"",
+            password:"",
+           
+        })
         console.log(`REGISTRATION ERROR,${result.response.data}`);
+       
        }
     }
 }
@@ -48,14 +60,14 @@ const handleLogin =async (e)=>{
     const{email,password} = userData
 
     if(!email || !password){
-        toast.info('Please Fill the form Completely')
+    toast.info('Something is missing!')
     }
     else{
         const result = await loginAPI(userData)
        // console.log(result);
        if(result.status==200){
         toast.success('login sucess')
-        sessionStorage.setItem("existinguser",JSON.stringify(result.data.existingUser))
+        sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
         sessionStorage.setItem("token",result.data.token)
         setuserData({
             email:"",
@@ -68,6 +80,10 @@ const handleLogin =async (e)=>{
        }
        else{
         toast.error(result.response.data)
+        setuserData({
+            email:"",
+            password:""
+        })
        }
     }
 }
@@ -82,19 +98,43 @@ const handleLogin =async (e)=>{
                         <p className='text-center text-light' style={{ fontSize: '30px' }}>{isRegisterForm ? "Create New Account" : "Login to Your Account"}</p>
     
     
-                        {isRegisterForm && <div class="form-outline mb-2">
-                            <input type="text" id="form2Example11" class="form-control"
-                                placeholder="Username" onChange={(e)=>setuserData({...userData,username:e.target.value})}/>
-    
-                        </div>}
+                        {isRegisterForm && 
+                
+
+              
+                   
+                    
+                            <div class="form-outline mb-2">
+                                   
+                            <div class="form-outline mb-2">
+                                   
+                            {/* <div className='division-profileimg '>
+             <label>
+                  <input type="file" style={{ display: 'none'}} onChange={(e) => setuserData({ ...userData, profileimage: e.target.files[0] })} />
+                    <img
+                      src={preview?preview:'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg'}
+                      alt='ERROR404'
+                      className='addprofileimg img-fluid border border-light'/>
+             </label>
+            </div> */}
+           
+                               </div>
+                                <input type="text" id="form2Example11" class="form-control" value={userData.username}
+                                    placeholder="Username" onChange={(e)=>setuserData({...userData,username:e.target.value})}/>
+        
+                            </div>
+                
+               
+                        
+                        }
                         <div class="form-outline mb-2">
-                            <input type="email" id="form2Example11" class="form-control"
+                            <input type="email" id="form2Example11" class="form-control" value={userData.email}
                                 placeholder="email address" onChange={(e)=>setuserData({...userData,email:e.target.value})}/>
     
                         </div>
     
                         <div class="form-outline mb-2">
-                            <input type="password" id="form2Example22" class="form-control" placeholder="password" onChange={(e)=>setuserData({...userData,password:e.target.value})}/>
+                            <input type="password" id="form2Example22" value={userData.password} class="form-control" placeholder="password" onChange={(e)=>setuserData({...userData,password:e.target.value})}/>
     
                         </div>
     
