@@ -15,13 +15,7 @@ function Auth({ register }) {
       
     }) 
 
-// console.log(userData);
-//     useEffect(() => {
-//         if (userData.profileimage) {
-//           setpreview(URL.createObjectURL(userData.profileimage))
-//         }
-//       }, [userData.profileimage])
-    
+ 
 
 // register
 const handleRegister = async (e)=>{
@@ -36,7 +30,12 @@ const handleRegister = async (e)=>{
        // console.log(result);
        if(result.status==200){
         toast.success(`Account Registered`)
-        
+        setuserData({
+            username:"",
+            email:"",
+            password:"",
+           
+        })
         navigate('/login')
        }
        else{
@@ -70,8 +69,10 @@ const handleLogin =async (e)=>{
         sessionStorage.setItem("existingUser",JSON.stringify(result.data.existingUser))
         sessionStorage.setItem("token",result.data.token)
         setuserData({
+            username:"",
             email:"",
-            password:""
+            password:"",
+           
         })
         setTimeout(() => {
             navigate('/')
@@ -81,8 +82,10 @@ const handleLogin =async (e)=>{
        else{
         toast.error(result.response.data)
         setuserData({
+            username:"",
             email:"",
-            password:""
+            password:"",
+           
         })
        }
     }
@@ -108,15 +111,7 @@ const handleLogin =async (e)=>{
                                    
                             <div class="form-outline mb-2">
                                    
-                            {/* <div className='division-profileimg '>
-             <label>
-                  <input type="file" style={{ display: 'none'}} onChange={(e) => setuserData({ ...userData, profileimage: e.target.files[0] })} />
-                    <img
-                      src={preview?preview:'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg'}
-                      alt='ERROR404'
-                      className='addprofileimg img-fluid border border-light'/>
-             </label>
-            </div> */}
+                           
            
                                </div>
                                 <input type="text" id="form2Example11" class="form-control" value={userData.username}

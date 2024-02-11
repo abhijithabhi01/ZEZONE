@@ -257,10 +257,12 @@ overflow: hidden;
 
 .comment-content {
      height: 78%;  
-     position: relative;  
-     
-          
+     position: relative;    
 }
+.navbar{
+  border: 3px solid white;
+  border-radius: 5px;
+}  
 .reply-input-box{
   width:98%;
 border: 2px solid #e8e8e8;

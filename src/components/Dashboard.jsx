@@ -67,7 +67,7 @@ useEffect(()=>{
   },[isupdate])
   useEffect(() => {
     if (usrprofile.profileimage) {
-      console.log(URL.createObjectURL(usrprofile.profileimage))
+     
       setpreview(URL.createObjectURL(usrprofile.profileimage))
       
     }
@@ -116,7 +116,7 @@ const handleeditprofile = async()=>{
         "Authorization":`Bearer ${token}`
     }
   const result = await editProfileAPI(reqBody,reqHeader)
-  console.log(result);
+ // console.log(result);
 
   if(result.status==200){
     toast.success('Profile Updated')
@@ -125,7 +125,7 @@ const handleeditprofile = async()=>{
     handlepClose()
   }
   else{
-    console.log(result.response.data);
+    console.log(`edit profile error`,result.response.data);
   }
   }
   else{
@@ -134,18 +134,18 @@ const handleeditprofile = async()=>{
             "Authorization":`Bearer ${token}`
         } 
   const result = await editProfileAPI(reqBody,reqHeader)
-  console.log(result);
+  //console.log(result);
   if(result.status==200){
     toast.success('Profile Updated')
     sessionStorage.setItem("existingUser",JSON.stringify(result.data))
     handlepClose()
   }
   else{
-    console.log(result.response.data);
+    console.log(`edit profile error`,result.response.data);
   }
   }
   }
-  console.log(usrprofile);
+  //console.log(usrprofile);
  const handleprofileClose = () => {
   setShow(false);
   setpreview("")

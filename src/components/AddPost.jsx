@@ -4,13 +4,9 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { ToastContainer, toast } from 'react-toastify';
 import { addpostAPI } from '../Services/allAPI';
-import { addPostResponseContext } from '../Contexts/ContextShare';
-
 
 function AddPost() {
 // context
-const {addPostResponse,setAddPostResponse} = useContext(addPostResponseContext)
-
 
   // modal
   const [show, setShow] = useState(false);
@@ -72,7 +68,7 @@ const {addPostResponse,setAddPostResponse} = useContext(addPostResponseContext)
         //console.log(result);
         if (result.status === 200) {
           toast.success('post uploaded')
-          setAddPostResponse(result.data)
+     
           handleClose()
           setpreview("")
           setaddpostdetails({
@@ -82,7 +78,7 @@ const {addPostResponse,setAddPostResponse} = useContext(addPostResponseContext)
          
         }
         else {
-          console.log(result);
+          //console.log(result);
           alert(result)
         }
       }

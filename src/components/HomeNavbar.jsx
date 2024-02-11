@@ -79,7 +79,7 @@ useEffect(()=>{
         </button> </div>    
      <div className='nav1'>
          {token?  <div className='profile-btn ms-2 mb-4' style={{display:isInputFocused?'none':'block'}}>
-          <button className='btn text-right btn-light rounded fs-1'>
+          <button className='btn mt-3 text-right btn-light rounded fs-1'>
             <Link className='text-decoration-none ' to={'/profile'}>{username}</Link>
             </button>
             </div>:

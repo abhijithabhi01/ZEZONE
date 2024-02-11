@@ -33,7 +33,7 @@ function Homeessential() {
  <div className='mb-5 bg-primary' id='settingsicon'>
 
         <Dropdown>
-      <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',}}>
+      <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',marginTop:'-10px'}}>
       <button type='button' className='btn' ><i class="fa-solid fa-bars fa-2xl text-light bg-primary" 
    
   ></i></button>

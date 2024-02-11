@@ -8,6 +8,8 @@ import { BASE_URL } from '../Services/baseurl';
 
 function Editpost({userpost}) {
  
+// context
+
   const [preview,setPreview] = useState("")
 
 const [usrposts,setUsrposts] = useState({
@@ -15,7 +17,7 @@ const [usrposts,setUsrposts] = useState({
  caption:userpost.caption,
   id:userpost._id
 })
-console.log(usrposts);
+//console.log(usrposts);
 
 const [show, setShow] = useState(false);
 
@@ -24,7 +26,7 @@ useEffect(() => {
   if (usrposts.postimage) {
     setPreview(URL.createObjectURL(usrposts.postimage));
   }
-  console.log('Preview:', preview);
+  //console.log('Preview:', preview);
 }, [usrposts.postimage, preview]);
 
 
@@ -46,7 +48,7 @@ handleClose()
     const {postimage, caption, id} = usrposts
 
     if (postimage || !caption) {
-      toast.info('Please fill the details completely')
+      toast.info('Something is missing')
     }
     else {
       const reqBody = new FormData();
@@ -61,13 +63,14 @@ reqBody.append("caption", caption);
           "Authorization": `Bearer ${token}`
         }
         const result = await editpostAPI(id, reqBody, reqHeader)
-        console.log(result);
+       // console.log(result);
         if (result.status === 200) {
-          toast.success('post Uploaded')
+          toast.success('post Updated')
+        
           handleClose()
         }
         else {
-          console.log(result);
+         // console.log(result);
           toast.error('Something went wrong,try again later')
         }
       }
@@ -77,13 +80,14 @@ reqBody.append("caption", caption);
           "Authorization": `Bearer ${token}`
         }
         const result = await editpostAPI(id, reqBody, reqHeader)
-        console.log(result);
+       // console.log(result);
         if (result.status === 200) {
           toast.success('post Updated')
+        
           handleClose()
         }
         else {
-          console.log(result);
+         // console.log(result);
          toast.error('Something went wrong,try again later')
         }
       }
