@@ -4,6 +4,7 @@ import './style2.css'
 import HomeNavbar from './HomeNavbar';
 import { dislikepostAPI, getallpostsAPI, getallusersAPI, likepostAPI } from '../Services/allAPI';
 import { BASE_URL } from '../Services/baseurl';
+import Spinner from 'react-bootstrap/Spinner';
 
 function UserHome() {
   const [open, setOpen] = useState(false);
@@ -82,7 +83,23 @@ useEffect(()=>{
 
 
 
-// LIKE
+const shuffleArray = (array) => {
+  let currentIndex = userpostresult.length, randomIndex;
+
+
+  while (currentIndex !== 0) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+};
 
 
 
@@ -94,7 +111,7 @@ useEffect(()=>{
 <div className='div-userhome'>
     
 
-    {userpostresult?.length>0? userpostresult.map((item)=>(
+{shuffleArray(userpostresult)?.length > 0 ? shuffleArray(userpostresult).map((item) => (
 
 <Card className='div-userpost ' style={cardStyle}>
 <div className={`pdivfirst-content p-2 ${showComments ? 'hidden' : ''}`}style={pdivstyle}>
@@ -144,7 +161,9 @@ useEffect(()=>{
 
     ))
     :
-    <h1 className='d-flex flex-column text-center text-light' style={{fontSize:'40px'}}>Please be patient,data is loading</h1>
+    <Spinner animation="border" role="status" variant='light'>
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
     }
 
     

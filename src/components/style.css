@@ -382,9 +382,6 @@ border-radius: 50px;
    .search{
     margin-left: 40px;
   }
-  .search input:focus{
-   width: 80%;
-  }
 
   }
 
@@ -396,7 +393,9 @@ border-radius: 50px;
   .nav1{
     margin: 10px;
   }
-
+.searchinput{
+  margin-top: 20px;
+}
 }
 .usrlogbtn btn{
   width: 100%;
@@ -405,33 +404,44 @@ border-radius: 50px;
  .example-collapse-text{
   height: 100px;
  }
- .dropdown-menu{
-  margin-top: 10%;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 
-  }
-.closebtn button{
+.searchinput{
+  border: none;
+  padding: .5rem;
+  border-radius: 1rem;
+  background: #e8e8e8;
+  transition: 0.3s;
+  margin-top: 15px;
+ }
+ 
+ .searchinput:focus {
+ 
+  background: #e8e8e8;
+
+  transition: 0.3s;
+ }
 
 
-}
+
+
 .hovertored a{
   text-decoration: none;
 }
 .hovertored:hover a{
-  color: red;
-  text-decoration: underline;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+
 }
 .zezonehover:hover a{
   color: rgb(255, 255, 255);
-  background-color: #000000;
+  background-color: #091036;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 10px;
 }
 .hovertored:hover h2{
   color: red;
   text-decoration: underline;
+  
 }
 .dropdown-toggle::after {
   display: none !important;
@@ -457,3 +467,5 @@ border-radius: 50px;
   width: 90vw;
  }
 }
+
+

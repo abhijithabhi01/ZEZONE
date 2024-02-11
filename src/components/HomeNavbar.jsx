@@ -20,9 +20,7 @@ function HomeNavbar({isNavbarVisible}) {
 
   const handleClose = () => {
     setIsClosed(true);
-    setsearchuser({
-      searchuser:""
-    })
+   
   };
 
   const handleInputFocus = () => {
@@ -31,7 +29,6 @@ function HomeNavbar({isNavbarVisible}) {
 
   const handleInputBlur = () => {
     setIsInputFocused(false);
- 
    
   };
 
@@ -97,41 +94,41 @@ useEffect(()=>{
      {token && 
       <div className='dropdown text-end'>
         
-   <Dropdown style={{justifyContent:'flex-end'}}>
+  
 
-        <Dropdown.Toggle variant="dark" className='' style={{visibility:'hidden'}} id="dropdown-autoclose-true"> 
-        <div className='search d-flex'  style={{visibility:'visible'}}>
-          
-      <i class="fa-solid fa-magnifying-glass magnifying-glass" ></i>
-
-        <input type="text" id='usersearchinput' value={setsearchuser.searchuser}
-        onChange={(e)=>setsearchuser(e.target.value)} 
-        class="form-control" 
-        placeholder="Search User"
-        onFocus={handleInputFocus}
-        onBlur={handleInputBlur}/>
-
-      </div>
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu  className="dropdown-menu bg-primary">
-          {searchuser?allusers.map((item)=>(
-            <Dropdown.Item>
-            <Link to={`/userprofile/${item.username}`} className='text-info fs-1 text-center'style={{textDecoration:'none'}}>
-              {item.username}
-            </Link>
-          </Dropdown.Item>
-          
-          ))
-          :
-          <h1 className='text-center text-light mt-5'>User not exist</h1>
-          }
+        <Dropdown>
+      <Dropdown.Toggle style={{background:'transparent'}} id="dropdown-basic">
         
+<input type="text" name="text" class="searchinput" 
+onChange={(e)=>setsearchuser(e.target.value)} 
+value={setsearchuser.searchuser}
+placeholder="Search User"
+onFocus={handleInputFocus}
+onBlur={handleInputBlur}></input>
+      </Dropdown.Toggle>
 
-        </Dropdown.Menu>
-      </Dropdown>
+      <Dropdown.Menu className='bg-dark text-light mt-2' style={{display:searchuser?'block':'none',height:'400px'}}>
+  {searchuser ? (
+    allusers.length > 0 ? (
+      allusers.map((item) => (
+        <Dropdown.Item key={item.username} >
+          <Link to={`/userprofile/${item.username}`} className='text-info fs-1 text-center' style={{ textDecoration: 'none' }}>
+            {item.username}
+          </Link>
+        </Dropdown.Item>
+      ))
+    ) : (
+      <h1 className='text-center text-light mt-5'>User not found</h1>
+    )
+  ) : (
+    <h1 className='text-center text-light mt-5' style={{display:'none'}}></h1>
+  )}
+</Dropdown.Menu>
+
+    </Dropdown>
+
 </div>}
-       <p id='disappearicon' className='mt-3' style={{display:isInputFocused?'none':'block'}}> <SettingIcon/></p></div>
+       <p id='disappearicon' className='mt-3'> <SettingIcon/></p></div>
        
     </div>}
     
