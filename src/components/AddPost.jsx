@@ -68,7 +68,7 @@ function AddPost() {
         //console.log(result);
         if (result.status === 200) {
           toast.success('post uploaded')
-     
+          window.location.reload();
           handleClose()
           setpreview("")
           setaddpostdetails({

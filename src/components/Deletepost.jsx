@@ -20,6 +20,7 @@ function Deletepost({ userpost }) {
       const result = await deletepostAPI(id,reqHeader)
       if(result.status===200){
         toast.success('post deleted')
+        window.location.reload();
         handleClose()
       }
       else{

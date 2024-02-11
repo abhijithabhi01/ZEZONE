@@ -111,8 +111,7 @@ const shuffleArray = (array) => {
     
 <div className='div-userhome bg-primary'>
     
-<div style={{padding:'50px',margin:'10px'}}>
-  
+
   {shuffleArray(userpostresult)?.length > 0 ? shuffleArray(userpostresult).map((item) => (
   
   <Card className='div-userpost ' style={cardStyle}>
@@ -168,14 +167,14 @@ const shuffleArray = (array) => {
   
       ))
       :
-     <div className='d-flex justify-content-center align-items-center'  style={{height:'70vh'}}>
+     <div className='d-flex justify-content-center align-items-center'  style={{height:'100vh'}}>
         <Spinner animation="border" role="status" variant='light'>
         <span className="visually-hidden">Loading...</span>
       </Spinner>
      </div>
       }
   
-</div>
+
     
 </div>
     </>
