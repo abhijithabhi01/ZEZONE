@@ -339,9 +339,6 @@ border-radius: 50px;
   width: 100%;
   text-align: left;
   position: relative;
-  /* background: url(../Assests/simon-lee-zft-W1kVEhg-unsplash.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
  }
  
  .div-four-inn h5{
@@ -396,6 +393,11 @@ border-radius: 50px;
 .searchinput{
   margin-top: 20px;
 }
+.nav2{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 }
 .usrlogbtn btn{
   width: 100%;
@@ -411,7 +413,7 @@ border-radius: 50px;
   border-radius: 1rem;
   background: #e8e8e8;
   transition: 0.3s;
-  margin-top: 15px;
+  margin-top: 10px;
  }
  
  .searchinput:focus {

@@ -69,8 +69,8 @@ useEffect(()=>{
   return (
 
     <>
-  {isNavbarVisible?   <div className='nav2 d-flex justify-content-end' >
-
+  {isNavbarVisible?   <div className='nav2 d-flex justify-content-between' >
+   <button type='button' className='btn hovertored'> <h2 className=''><Link to={'/'} className='text-light' style={{textDecoration:'none'}}><i class="fa-solid fa-arrow-left"></i>Home</Link></h2></button>
 <p id='disappearicon' className='mt-3' style={{display:isInputFocused?'none':'block'}}> <SettingIcon/></p></div>
   
   :<div className="navbar d-flex justify-content-between p-1 bg-primary">

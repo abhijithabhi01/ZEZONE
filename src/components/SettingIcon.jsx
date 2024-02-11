@@ -44,7 +44,7 @@ function SettingIcon() {
   <Offcanvas className=' bg-light' show={show} onHide={handleClose} placement={'end'}>
           <Offcanvas.Header className='me-5 fs-4' closeButton>
             <Offcanvas.Title>
-              <h1  className='m-3 zezonehover' style={{fontSize:"40px"}}><a href="http://localhost:3000" target="_blank" style={{textDecoration:"none"}}>ZEZONE</a></h1></Offcanvas.Title>
+              <h1  className='m-3 zezonehover' style={{fontSize:"40px"}}><a href="https://zezone-abhijith-ss-projects.vercel.app/" target="_blank" style={{textDecoration:"none"}}>ZEZONE</a></h1></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className='p-5 m-4'>
            {token? 
