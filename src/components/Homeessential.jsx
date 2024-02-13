@@ -26,41 +26,48 @@ function Homeessential() {
   },[])
   return (
     <>
-{token ||
- <div className='navbar d-flex justify-content-between bg-primary'>
- <div className='ms-2'><button className='btn text-right btn-light rounded'><Link className='text-decoration-none' to={'/login'}>LOGIN</Link></button></div>
-
- <div className='mb-5 bg-primary' id='settingsicon'>
-
-        <Dropdown>
-      <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',marginTop:'-10px'}}>
-      <button type='button' className='btn' ><i class="fa-solid fa-bars fa-2xl text-light bg-primary" 
-   
-  ></i></button>
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu style={{maxHeight:'100vh'}}>
-      <div className='text-center hrefdiv'>
-    <h2 className='m-4 hovertored'><a href='#home'>Home</a></h2>
-    <h2 className='m-4 hovertored'><a href='#about'>About</a></h2>
-    <h2 className='m-4 hovertored'><a href='#features'>Features</a></h2>
-    <h2 className='m-4 hovertored'><a href='#review'>Reviews</a></h2>
-    <h2 className='m-4 hovertored'><a href='#contact'>contact</a></h2>
-    <h2 className='m-4 hovertored'><a href='#register'>Register</a></h2>
-    <h2 className='m-4 hovertored'><Link to={'/login'}>Login</Link></h2>
+<section  id='home'>
+  {token ||
+   <div className='navbar d-flex justify-content-between bg-primary'>
+   <div className='ms-2'><Link className='text-decoration-none' to={'/login'}><button type='button' className='btn text-right btn-light rounded'>LOGIN</button></Link>
+  
+  
+  
+  
   </div>
-      </Dropdown.Menu>
-    </Dropdown>
+  
+   <div className='mb-5 bg-primary' id='settingsicon'>
+  
+          <Dropdown>
+        <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',marginTop:'-10px'}}>
+        <button type='button' className='btn' ><i class="fa-solid fa-bars fa-2xl text-light bg-primary" 
+     
+    ></i></button>
+        </Dropdown.Toggle>
+  
+        <Dropdown.Menu style={{maxHeight:'100vh'}}>
+        <div className='text-center hrefdiv'>
+      <h2 className='m-4 hovertored'><a href='#home'>Home</a></h2>
+      <h2 className='m-4 hovertored'><a href='#about'>About</a></h2>
+      <h2 className='m-4 hovertored'><a href='#features'>Features</a></h2>
+      <h2 className='m-4 hovertored'><a href='#review'>Reviews</a></h2>
+      <h2 className='m-4 hovertored'><a href='#contact'>contact</a></h2>
+      <h2 className='m-4 hovertored'><a href='#register'>Register</a></h2>
+      <h2 className='m-4 hovertored'><Link to={'/login'}>Login</Link></h2>
+    </div>
+        </Dropdown.Menu>
+      </Dropdown>
+  
+  </div>
+  
+  </div>
+  }
+</section>
 
-</div>
-
-</div>
-}
 
 
 
-
-        <section id='home'>
+        <section>
            <div>
       <div className="section m-5" id='home'>
           <div className="heading1 ">

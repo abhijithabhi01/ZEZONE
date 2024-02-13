@@ -102,7 +102,7 @@ useEffect(()=>{
      </div>
 
 
-
+     <hr style={{ border: '1.5px solid white ', width: '100%' }} />
 <div className='bg-primary' style={{height:'100%'}}>
     <div><h1 className='text-light ms-5'>User Posts</h1></div>
     <div className='bg-primary userpostcard' >

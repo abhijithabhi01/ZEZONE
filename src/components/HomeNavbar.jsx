@@ -84,7 +84,8 @@ useEffect(()=>{
             </button>
             </div>:
 
-      <div className='ms-2'><button className='btn text-right btn-light rounded'><Link className='text-decoration-none' to={'/login'}>LOGIN</Link></button></div>
+      <div className='ms-2'><button type='button' className='btn text-right btn-light rounded'>
+        <Link className='text-decoration-none' to={'/login'}>LOGIN</Link></button></div>
     }
      </div>
 

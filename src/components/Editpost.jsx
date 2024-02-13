@@ -67,7 +67,9 @@ reqBody.append("caption", caption);
         if (result.status === 200) {
           toast.success('post Updated')
           handleClose()
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+        }, 2000);
         }
         else {
          // console.log(result);
@@ -84,7 +86,9 @@ reqBody.append("caption", caption);
         if (result.status === 200) {
           toast.success('post Updated')
           handleClose()
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+        }, 2000);
         }
         else {
          // console.log(result);

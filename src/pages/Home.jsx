@@ -18,7 +18,7 @@ function Home() {
     
      <Homeessential/>
     </div>
-    :<div>
+    :<div  style={{height:"100vh"}}>
       <UserHome/>
     :</div>
    }

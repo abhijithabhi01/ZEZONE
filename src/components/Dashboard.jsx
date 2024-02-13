@@ -236,7 +236,7 @@ const handleeditprofile = async()=>{
           </div>
         </div>
      </div>
-
+     <hr style={{ border: '1.5px solid white', width: '100%' }} />
 <AddPost/>
 
         <div className="post-row p-2">

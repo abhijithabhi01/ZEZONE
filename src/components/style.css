@@ -429,24 +429,54 @@ border-radius: 50px;
 .hovertored a{
   text-decoration: none;
 }
-.hovertored:hover a{
+.hovertoredsubdiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.hovertoredsubdiv:hover h2{
+
   color: rgb(255, 255, 255);
   background-color: #000000;
-
+  border-radius: 10px;
+}
+.hovertoredsubdiv:hover .hovertored a{
+  color: white;
+}
+.zezonehover a{
+transition: color .5s ease-in-out, box-shadow .3s ease-in-out;
 }
 .zezonehover:hover a{
   color: rgb(255, 255, 255);
-  background-color: #091036;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 10px;
+  box-shadow: inset 200px 0 0 0 #000000;;
 }
-.hovertored:hover h2{
+.hovertoreddiv{
+justify-content: center;
+align-items: center;
+text-align: center;
+width: 100%;
+padding: 50px 0px 0px 0px;
+}
+.hovertoreddiv h2{
+padding: 15px;
+width: 350px;
+text-align: center;
+
+}
+
+.hovertoredbtn:hover h2{
+  align-items: center;
+  justify-content: center;
   color: red;
-  text-decoration: underline;
-  
+  background-color: #000000;
 }
 .dropdown-toggle::after {
   display: none !important;
+}
+.hovertored:hover h2{
+  color: rgb(255, 255, 255);
+  text-decoration: underline;
 }
 @media only screen and (max-width: 992px) {
 #dropdown-basic{
@@ -475,6 +505,9 @@ border-radius: 50px;
  .profile-btn,.profile-btn button{
   width: 90vw;
  }
+ .searchinput{
+  margin-top: 22px;
+}
 }
 
 

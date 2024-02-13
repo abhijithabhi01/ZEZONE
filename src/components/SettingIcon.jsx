@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import './style.css'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { deleteuserAPI } from '../Services/allAPI';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function SettingIcon() {
@@ -13,9 +15,11 @@ function SettingIcon() {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
     const handleClosemodal = () => setShowmodal(false);
-    const handleShowmodal = () => setShowmodal(true);
+    const handleShowmodal = () => {setShowmodal(true); handleClose()}
   const[token,setToken] = useState(false)
   const {isAuthorized, setIsAuthorized}= useState(true)
+  const [userId,setUserId] = useState("")
+
   useEffect(()=>{
     if(sessionStorage.getItem('token')){
       setToken(true)
@@ -24,16 +28,50 @@ function SettingIcon() {
   const navigate = useNavigate()
   // logout
   const handleLogout = ()=>{
-    //remove existing user details from browser
+   
     sessionStorage.removeItem("existingUser")
     sessionStorage.removeItem("token")
    handleClosemodal()
-   //navigate to home
+
    navigate('/')
    window.location.reload();
   }
 
+  const [showdeletemodal, setshowdeletemodal] = useState(false);
 
+    const handleClosedeletemodal = () => setshowdeletemodal(false);
+    const handleShowdeletemodal = () => { setshowdeletemodal(true); handleClose()}
+    useEffect(()=>{
+      if(sessionStorage.getItem('existingUser')){
+        setUserId(JSON.parse(sessionStorage.getItem('existingUser'))._id)
+      }
+    },[])
+   // console.log(userId);
+
+   //delete user
+    const handleDelete = async(id)=>{
+      const token = sessionStorage.getItem("token")
+      const reqHeader ={
+        "Content-Type":"application/json",
+        "Authorization":`Bearer ${token}`
+    } 
+    
+    const result = await deleteuserAPI(id,reqHeader)
+    if(result.status===200){
+      toast.success('Account deleted')
+      sessionStorage.removeItem("existingUser")
+      sessionStorage.removeItem("token")
+      handleClosedeletemodal()
+      setTimeout(() => {
+          navigate('/')
+    }, 2000);
+    }
+    else{
+      console.log(result.response.data)
+      toast.error(`something went wrong, Try again later`)
+      handleClosedeletemodal()
+    }
+    }
   return (
     <>
 <div className='mb-2' id='settingsicon'>
@@ -46,22 +84,20 @@ function SettingIcon() {
             <Offcanvas.Title>
               <h1  className='m-3 zezonehover' style={{fontSize:"40px"}}><a href="https://zezone-abhijith-ss-projects.vercel.app/" target="_blank" style={{textDecoration:"none"}}>ZEZONE</a></h1></Offcanvas.Title>
           </Offcanvas.Header>
-          <Offcanvas.Body className='p-5 m-4'>
-           {token? 
-          <div className='text-center'>
-             <h2 className='m-4 hovertored'><Link to={'/'} >Home</Link></h2>
-              <h2 className='m-4 hovertored'><Link to={'/profile'} >profile</Link></h2>
-             <button className='hovertored' onClick={handleShowmodal}  style={{ background: 'none', border: 'none', cursor: 'pointer'}}> <h2 >Logout</h2></button>
+          <Offcanvas.Body className=''>
+         
+          <div className='hovertoreddiv'>
+          <div className='hovertoredsubdiv'>    <h2 className='hovertored'><Link to={'/'} >Home</Link></h2> </div>
+          <div className='hovertoredsubdiv'> <h2 className='hovertored'><Link to={'/profile'} >profile</Link></h2> </div>
+          <div className='hovertoredsubdiv'>    
+             <button className='hovertoredbtn' onClick={handleShowmodal}  style={{ background: 'none', border: 'none', cursor: 'pointer'}}> <h2 >Logout</h2></button> </div>
+          <div className='hovertoredsubdiv'>    <button className='hovertoredbtn' onClick={handleShowdeletemodal}  style={{ background: 'none', border: 'none', cursor: 'pointer'}}> <h2>Delete Account</h2></button> </div>
+           
+          
+            
           </div>
-            :
-  <div className='text-center'>
-    {/* <h2 className='m-4 hovertored' href='#about'>Home</h2>
-    <h2 className='m-4 hovertored' href='#about'>About</h2>
-    <h2 className='m-4 hovertored'>Features</h2>
-    <h2 className='m-4 hovertored'>Contact</h2>
-    */}
-  </div>
-  }
+  
+  
           </Offcanvas.Body>
         </Offcanvas>
   
@@ -75,7 +111,9 @@ function SettingIcon() {
         <Modal.Header closeButton>
           <Modal.Title>Logout</Modal.Title>
         </Modal.Header>
-
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h3  className='text-center'>Do you want Logout</h3>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
         <Modal.Footer>
           <Button variant="success" onClick={handleClosemodal}>
             Cancel
@@ -86,6 +124,23 @@ function SettingIcon() {
         </Modal.Footer>
       </Modal>
 
+      <Modal show={showdeletemodal} onHide={handleClosedeletemodal} animation={false} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Account</Modal.Title>
+        </Modal.Header>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h4 className='text-center'>Do You Want to Delete your Account,All your data will be lost This Action is Irreversible </h4>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <Modal.Footer>
+          <Button variant="success" onClick={handleClosedeletemodal}>
+            Cancel
+          </Button>
+          <Button variant="danger" onClick={(e)=>handleDelete(userId)}>
+           Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      <ToastContainer position='top-right' autoClose={1500} theme='colored' />
     </>
   )
 }
