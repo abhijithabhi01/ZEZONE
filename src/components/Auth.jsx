@@ -133,25 +133,25 @@ const handleLogin =async (e)=>{
     
                         </div>
     
-                    { isRegisterForm?   <div class="text-center pt-1 mb-2">
-                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1 w-100 rounded" type="button" onClick={handleRegister}>Register
+                    { isRegisterForm?   <div class="text-center pt-1 mb-2 btntohover">
+                            <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1 w-100 rounded " type="button" onClick={handleRegister}>Register
                             </button>
                         </div>:
-                            <div class="text-center pt-1 mb-2">
-                            <button onClick={handleLogin} class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1 w-100 rounded" type="button">Login
+                            <div class="text-center pt-1 mb-2 btntohover">
+                            <button onClick={handleLogin} class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-1 w-100 rounded " type="button">Login
                             </button>
                         </div>
                         }
     
                         {isRegisterForm ?
-                            <div class="d-flex align-items-center justify-content-center">
-                                <p class="mb-0 me-2">Already a user,<Link to={'/login'} className='text-danger'>Login</Link></p>
+                            <div class="d-flex align-items-center justify-content-center ">
+                                <p class="mb-0 me-2">Already a user,<Link to={'/login'} className='text-danger atoline'>Login</Link></p>
                             </div>
                             :
                             <div class="d-flex align-items-center justify-content-center ">
-                                <p class="mb-0 me-2">New user,<Link to={'/register'} className='text-danger'>Create New Account</Link></p>
+                                <p class="mb-0 me-2 ">New user,<Link to={'/register'} className='text-danger atoline'>Create New Account</Link></p>
                             </div>}
-                        <Link to={'/'} style={{ textDecoration: 'none',color:'white' }}><i class="fa-solid fa-arrow-left me-3 text-light"></i>Back to Home</Link>
+                        <Link to={'/'} className='atoline text-light'><i class="fa-solid fa-arrow-left me-3 text-light"></i>Back to Home</Link>
                     </form>
 </div>
             </div>

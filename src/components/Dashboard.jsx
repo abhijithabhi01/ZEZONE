@@ -75,7 +75,7 @@ useEffect(()=>{
       setpreview("")
     }
   }, [usrprofile.profileimage])
-  
+  // console.log(usrprofile);
 //get user posts
 const getuserposts = async()=>{
   if(sessionStorage.getItem('token')){
@@ -98,7 +98,7 @@ useEffect(()=>{
 
 //edit profile
 const handleeditprofile = async()=>{
-  const{username,profileimage,bio} = usrprofile
+  const{username,bio,profileimage} = usrprofile
   if(!profileimage || !bio){
     toast.info('complete the profile details')
   }
@@ -120,6 +120,7 @@ const handleeditprofile = async()=>{
 
   if(result.status==200){
     toast.success('Profile Updated')
+    console.log(result);
     setisUpdate(true)
     sessionStorage.setItem("existingUser",JSON.stringify(result.data))
     handlepClose()
@@ -134,7 +135,7 @@ const handleeditprofile = async()=>{
             "Authorization":`Bearer ${token}`
         } 
   const result = await editProfileAPI(reqBody,reqHeader)
-  //console.log(result);
+  console.log(result);
   if(result.status==200){
     toast.success('Profile Updated')
     sessionStorage.setItem("existingUser",JSON.stringify(result.data))

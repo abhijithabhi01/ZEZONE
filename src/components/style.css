@@ -515,4 +515,13 @@ text-align: center;
 }
 }
 
-
+.atoline{
+  text-decoration: none;
+}
+.atoline:hover{
+  text-decoration: underline white;
+}
+.btntohover:hover button{
+  background-color: white;
+  color: black;
+}
