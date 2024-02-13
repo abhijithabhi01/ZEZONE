@@ -47,13 +47,13 @@ function Homeessential() {
   
         <Dropdown.Menu style={{maxHeight:'100vh'}}>
         <div className='text-center hrefdiv'>
-      <h2 className='m-4 hovertored'><a href='#home'>Home</a></h2>
-      <h2 className='m-4 hovertored'><a href='#about'>About</a></h2>
-      <h2 className='m-4 hovertored'><a href='#features'>Features</a></h2>
-      <h2 className='m-4 hovertored'><a href='#review'>Reviews</a></h2>
-      <h2 className='m-4 hovertored'><a href='#contact'>contact</a></h2>
-      <h2 className='m-4 hovertored'><a href='#register'>Register</a></h2>
-      <h2 className='m-4 hovertored'><Link to={'/login'}>Login</Link></h2>
+      <h2 className='m-4 hovertowhite'><a href='#home'>Home</a></h2>
+      <h2 className='m-4 hovertowhite'><a href='#about'>About</a></h2>
+      <h2 className='m-4 hovertowhite'><a href='#features'>Features</a></h2>
+      <h2 className='m-4 hovertowhite'><a href='#review'>Reviews</a></h2>
+      <h2 className='m-4 hovertowhite'><a href='#contact'>contact</a></h2>
+      <h2 className='m-4 hovertowhite'><a href='#register'>Register</a></h2>
+      <h2 className='m-4 hovertowhite'><Link to={'/login'}>Login</Link></h2>
     </div>
         </Dropdown.Menu>
       </Dropdown>

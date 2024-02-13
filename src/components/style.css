@@ -423,10 +423,14 @@ border-radius: 50px;
   transition: 0.3s;
  }
 
+.hovertowhite:hover a{
+  color: rgb(255, 255, 255);
+  background-color: #000000;
+  border-radius: 5px;
+}
 
 
-
-.hovertored a{
+.hovertored a,.hovertowhite a{
   text-decoration: none;
 }
 .hovertoredsubdiv{
@@ -471,6 +475,7 @@ text-align: center;
   color: red;
   background-color: #000000;
 }
+
 .dropdown-toggle::after {
   display: none !important;
 }
