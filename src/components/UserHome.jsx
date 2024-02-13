@@ -11,8 +11,8 @@ function UserHome() {
   const [open, setOpen] = useState(false);
   const[alluserposts,setalluserposts] = useState([])
   const[allusers,setallusers] = useState([])
-
   const [showComments, setShowComments] = useState(false);
+  const [likedPosts, setLikedPosts] = useState([]); // State to store liked posts
 
   const toggleComments = () => {
     setShowComments(!showComments);
@@ -98,12 +98,35 @@ const shuffleArray = (array) => {
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
   }
-
   return array;
 };
 
 
+const handleLike = async (postId) => {
+  try {
+    // Call the API to like the post
+    const result = await likepostAPI(postId);
+    if (result.status === 200) {
+      // Update the likedPosts state
+      setLikedPosts((prevLikedPosts) => [...prevLikedPosts, postId]);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
+const handleDislike = async (postId) => {
+  try {
+    // Call the API to dislike the post
+    const result = await dislikepostAPI(postId);
+    if (result.status === 200) {
+      // Remove the post from the likedPosts state
+      setLikedPosts((prevLikedPosts) => prevLikedPosts.filter((id) => id !== postId));
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
   return (
     <>
@@ -140,6 +163,9 @@ const shuffleArray = (array) => {
              </button>
       <button className='btn comment-btn' onClick={toggleComments}><i className="fa-regular fa-comment fa-2xl text-primary"></i></button>
     </div>
+
+
+    
     <h3 className='ms-4' style={{ overflow: 'hidden' }}>{item.caption}</h3>
   </div>
   {showComments && (
@@ -163,6 +189,12 @@ const shuffleArray = (array) => {
   </div>
   
   )}
+
+
+
+
+
+
   </Card>
   
       ))

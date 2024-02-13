@@ -74,10 +74,10 @@ function AddPost() {
             postimage: "",
             caption: ""
           })
-          console.log(result);
-        //   setTimeout(() => {
-        //     window.location.reload();
-        // }, 2000);
+          // console.log(result);
+          setTimeout(() => {
+            window.location.reload();
+        }, 2000);
         }
        
         else {
