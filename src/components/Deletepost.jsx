@@ -35,7 +35,7 @@ function Deletepost({ userpost }) {
  <button onClick={handleShow} className='btn text-danger fs-5'>Delete post</button>
 
 
-      <Modal show={show} onHide={handleClose} animation={false} centered>
+      <Modal show={show} onHide={handleClose} centered  backdrop="static"> 
         <Modal.Header closeButton>
           <Modal.Title>Delete the post</Modal.Title>
         </Modal.Header>

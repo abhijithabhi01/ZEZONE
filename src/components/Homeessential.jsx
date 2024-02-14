@@ -36,7 +36,7 @@ function Homeessential() {
   
   </div>
   
-   <div className='mb-5 bg-primary' id='settingsicon'>
+   <div className='mb-5 bg-primary dropdsettingsicon'>
   
           <Dropdown>
         <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',marginTop:'-10px'}}>
@@ -45,17 +45,25 @@ function Homeessential() {
     ></i></button>
         </Dropdown.Toggle>
   
-        <Dropdown.Menu style={{maxHeight:'100vh'}}>
-        <div className='text-center hrefdiv'>
-      <h2 className='m-4 hovertowhite'><a href='#home'>Home</a></h2>
-      <h2 className='m-4 hovertowhite'><a href='#about'>About</a></h2>
-      <h2 className='m-4 hovertowhite'><a href='#features'>Features</a></h2>
-      <h2 className='m-4 hovertowhite'><a href='#review'>Reviews</a></h2>
-      <h2 className='m-4 hovertowhite'><a href='#contact'>contact</a></h2>
-      <h2 className='m-4 hovertowhite'><a href='#register'>Register</a></h2>
-      <h2 className='m-4 hovertowhite'><Link to={'/login'}>Login</Link></h2>
-    </div>
-        </Dropdown.Menu>
+  
+          <Dropdown.Menu className='dropdmenu'  style={{maxHeight:'100vh',border:'5px solid black',borderRadius:'10px',boxShadow:'0 10px rgba(0,0,0,0,.25),0 10px 10px  rgba(0,0,0,0.22)'}}>
+          <div className='text-center hrefdiv '>
+        <h2 className='m-4 hovertowhite'><a href='#home'>Home</a></h2>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h2 className='m-4 hovertowhite'><a href='#about'>About</a></h2>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h2 className='m-4 hovertowhite'><a href='#features'>Features</a></h2>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h2 className='m-4 hovertowhite'><a href='#review'>Reviews</a></h2>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h2 className='m-4 hovertowhite'><a href='#contact'>contact</a></h2>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h2 className='m-4 hovertowhite'><a href='#register'>Register</a></h2>
+        <hr style={{ border: '1.5px solid black', width: '100%' }} />
+        <h2 className='m-4 hovertowhite'><Link to={'/login'}>Login</Link></h2>
+      </div>
+          </Dropdown.Menu>
+  
       </Dropdown>
   
   </div>

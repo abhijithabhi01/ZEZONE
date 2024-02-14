@@ -18,7 +18,7 @@ const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 
-const handlepClose = () => setShow(false);
+
 
 
 const handleprofileShow = () => setShow(true);
@@ -88,6 +88,7 @@ const getuserposts = async()=>{
  const result = await getuserprofileAPI(reqHeader)
  if(result.status===200){
 setuserPosts(result.data)
+//console.log(result.data);
  }
   }
 }
@@ -95,7 +96,12 @@ setuserPosts(result.data)
 useEffect(()=>{
   getuserposts()
 },[])
-
+const handlepClose = () => {
+  setUsrprofile({
+    bio:"",
+  profileimage:""
+  })
+  setShow(false);}
 //edit profile
 const handleeditprofile = async()=>{
   const{username,bio,profileimage} = usrprofile
@@ -182,7 +188,7 @@ const handleeditprofile = async()=>{
 
 
 
-          <Modal show={show} onHide={handlepClose} centered>
+          <Modal show={show} onHide={handlepClose} centered  backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Edit Profile</Modal.Title>
         </Modal.Header>

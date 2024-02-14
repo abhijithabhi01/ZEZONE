@@ -45,3 +45,10 @@ margin: 20px;
   }
   
 }
+@media (max-width: 350px) {
+  .usrpostdiv {
+  contain: content;
+    margin: 50px;
+  }
+  
+}

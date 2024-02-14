@@ -6,13 +6,18 @@ import { dislikepostAPI, getallpostsAPI, getallusersAPI, likepostAPI } from '../
 import { BASE_URL } from '../Services/baseurl';
 import Spinner from 'react-bootstrap/Spinner';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function UserHome() {
   const [open, setOpen] = useState(false);
   const[alluserposts,setalluserposts] = useState([])
   const[allusers,setallusers] = useState([])
   const [showComments, setShowComments] = useState(false);
-  const [likedPosts, setLikedPosts] = useState([]); // State to store liked posts
+  const[isliked,setIsliked] = useState(false)
+
+  const [usrpost,setUsrpost] = useState({
+    fixedvalue:1
+  })
 
   const toggleComments = () => {
     setShowComments(!showComments);
@@ -83,49 +88,44 @@ useEffect(()=>{
 },[])
 
 
-
 const shuffleArray = (array) => {
-  let currentIndex = userpostresult.length, randomIndex;
-
+  const newArray = [...array];  // Create a new array copy
+  let currentIndex = newArray.length, randomIndex;
 
   while (currentIndex !== 0) {
-
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
+    [newArray[currentIndex], newArray[randomIndex]] = [
+      newArray[randomIndex], newArray[currentIndex]
+    ];
   }
-  return array;
+
+  return newArray;
 };
 
+//like || dislike
 
-const handleLike = async (postId) => {
-  try {
-    // Call the API to like the post
-    const result = await likepostAPI(postId);
-    if (result.status === 200) {
-      // Update the likedPosts state
-      setLikedPosts((prevLikedPosts) => [...prevLikedPosts, postId]);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
 
-const handleDislike = async (postId) => {
-  try {
-    // Call the API to dislike the post
-    const result = await dislikepostAPI(postId);
+const handleLikeDislike = async (id) => {
+  const token = sessionStorage.getItem("token")
+  const reqHeader ={
+    "Content-Type":"application/json",
+    "Authorization":`Bearer ${token}`
+} 
+  
+
+  
+    const result = await likepostAPI(id,reqHeader);
+
     if (result.status === 200) {
-      // Remove the post from the likedPosts state
-      setLikedPosts((prevLikedPosts) => prevLikedPosts.filter((id) => id !== postId));
+      toast.success('Post liked');
+    } else {
+      console.log(result.response); 
+     
+      toast.error(`Something went wrong. Try again later.`);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
+  
 };
 
   return (
@@ -153,15 +153,29 @@ const handleDislike = async (postId) => {
     </div>
     <hr style={{ border: '1.5px solid black', width: '100%' }} />
     <div className="d-flex justify-content-start flex-start">
-    <button className='like ms-2 fs-2'
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-            <i class="fa-solid fa-thumbs-up"></i>
-             </button>
-             <button className='dislike ms-2 fs-2'
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-            <i class="fa-solid fa-thumbs-down"></i>
-             </button>
-      <button className='btn comment-btn' onClick={toggleComments}><i className="fa-regular fa-comment fa-2xl text-primary"></i></button>
+    {item.liked ? (
+  <button
+    type='button'
+    className={`like ms-2 fs-2 `}
+    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+   
+  >
+    <i className="fa-solid fa-heart" style={{ color: '#ff0000' }}></i>
+  </button>
+) : (
+  <button
+    type='button'
+    className={`like ms-2 fs-2 `}
+    style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+  
+  >
+    <i className="fa-regular fa-heart" style={{ color: '#ff0000' }}></i>
+  </button>
+)}
+
+
+            
+      <button className='btn comment-btn' onClick={toggleComments}  style={{marginTop:'-0.3%'}}><i className="fa-regular fa-comment fa-2xl text-primary"></i></button>
     </div>
 
 

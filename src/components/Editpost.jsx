@@ -106,7 +106,7 @@ reqBody.append("caption", caption);
 
 
   {/* modal */}
-  <Modal show={show} onHide={handleClose} centered>
+  <Modal show={show} onHide={handleClose} centered  backdrop="static">
         <Modal.Header closeButton>
           <Modal.Title>Edit POST</Modal.Title>
         </Modal.Header>

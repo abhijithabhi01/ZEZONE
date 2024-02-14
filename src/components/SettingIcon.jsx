@@ -63,7 +63,9 @@ function SettingIcon() {
       sessionStorage.removeItem("token")
       handleClosedeletemodal()
       setTimeout(() => {
+        window.location.reload();
           navigate('/')
+
     }, 2000);
     }
     else{
@@ -82,7 +84,7 @@ function SettingIcon() {
   <Offcanvas className=' bg-light' show={show} onHide={handleClose} placement={'end'}>
           <Offcanvas.Header className='me-5 fs-4' closeButton>
             <Offcanvas.Title>
-              <h1  className='m-3 zezonehover' style={{fontSize:"40px"}}><a href="https://zezone-abhijith-ss-projects.vercel.app/" target="_blank" style={{textDecoration:"none"}}>ZEZONE</a></h1></Offcanvas.Title>
+              <h1  className='m-3 zezonehover' style={{fontSize:"40px"}}><a href="https://zezone-abhijith-ss-projects.vercel.app" target="_blank" style={{textDecoration:"none"}}>ZEZONE</a></h1></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body className=''>
          
@@ -107,7 +109,7 @@ function SettingIcon() {
 
 
 
-<Modal show={showmodal} onHide={handleClosemodal} animation={false} centered>
+<Modal show={showmodal} onHide={handleClosemodal}  backdrop="static" centered>
         <Modal.Header closeButton>
           <Modal.Title>Logout</Modal.Title>
         </Modal.Header>
@@ -124,7 +126,7 @@ function SettingIcon() {
         </Modal.Footer>
       </Modal>
 
-      <Modal show={showdeletemodal} onHide={handleClosedeletemodal} animation={false} centered>
+      <Modal show={showdeletemodal} onHide={handleClosedeletemodal}  backdrop="static" centered>
         <Modal.Header closeButton>
           <Modal.Title>Delete Account</Modal.Title>
         </Modal.Header>

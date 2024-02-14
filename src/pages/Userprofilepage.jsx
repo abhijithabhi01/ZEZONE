@@ -37,7 +37,7 @@ const igotuser = allusers.find(item=>item[searchkey] === showusername)
 
 if (igotuser) {
  setUser(igotuser);
- // console.log(`user found`,igotuser);
+ //console.log(`user found`,igotuser);
 }
 },[allusers,showusername,searchkey])
 
@@ -52,7 +52,7 @@ const getallposts = async()=>{
     }
     const result = await getallpostsAPI(reqHeader)
     if(result.status===200){
-     // console.log(result.data);
+     console.log(result.data);
      setalluserposts(result.data);
       
     }
@@ -93,10 +93,10 @@ useEffect(()=>{
           
             </div>
           </div>
-          <div className='col-lg-6 col-md-6 col-sm-12 division-profiledetails'>
+          <div className='col-lg-6 col-md-6 col-sm-12 division-profiledetails' style={{overflow:'auto'}}>
        
-            <h2>{user.username}</h2>
-                <h4>{user.bio}</h4> 
+            <h2 sty>{user.username}</h2>
+                <h4 >{user.bio}</h4> 
           </div>
         </div>
      </div>

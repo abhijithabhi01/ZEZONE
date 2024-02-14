@@ -44,16 +44,6 @@ export const deletepostAPI = async(postId,reqHeader)=>{
     return await commonAPI("DELETE",`${BASE_URL}/post/delete/${postId}`,{},reqHeader)
 }
 
-//likepost
-export const likepostAPI = async(postId,reqHeader)=>{
-    return await commonAPI("POST",`${BASE_URL}/posts/like/${postId}`,reqHeader)
-}
-
-//dislikepost
-export const dislikepostAPI = async(postId,reqHeader)=>{
-    return await commonAPI("POST",`${BASE_URL}/posts/dislike//${postId}`,reqHeader)
-}
-
 // edit profile api
 export const editProfileAPI = async(reqBody,reqHeader)=>{
     return await commonAPI("PUT",`${BASE_URL}/user/edit`,reqBody,reqHeader)
@@ -62,4 +52,14 @@ export const editProfileAPI = async(reqBody,reqHeader)=>{
 //delete post api
 export const deleteuserAPI = async(userId,reqHeader)=>{
     return await commonAPI("DELETE",`${BASE_URL}/user/delete/${userId}`,{},reqHeader)
+}
+
+//likepost
+export const likepostAPI = async(postId,reqHeader)=>{
+    return await commonAPI("POST",`${BASE_URL}/userposts/like/${postId}`,reqHeader)
+}
+
+//dislikepost
+export const dislikepostAPI = async(postId,reqHeader,reqBody)=>{
+    return await commonAPI("POST",`${BASE_URL}/userposts/dislike/${postId}`,{},reqHeader)
 }

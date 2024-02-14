@@ -107,7 +107,7 @@ function AddPost() {
 
 
       {/* modal */}
-      <Modal show={show} onHide={handleClose} centered>
+      <Modal show={show} onHide={handleClose}  backdrop="static" centered>
         <Modal.Header closeButton>
           <Modal.Title>ADD POST</Modal.Title>
         </Modal.Header>
