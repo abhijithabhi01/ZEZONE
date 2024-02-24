@@ -234,7 +234,7 @@ useEffect(()=>{
     </button>
     </div>
     <div className='comment-content ms-2'>
-    <div className='commentlistbox'> 
+    <div className='commentlistbox' style={{height:'85%'}}> 
     {item.comments && item.comments.length > 0 ? (
     item.comments.map((comment) => (
       <div key={comment._id}>

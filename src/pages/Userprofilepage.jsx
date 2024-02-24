@@ -212,10 +212,11 @@ function Userprofilepage() {
     }
   };
   useEffect(() => {
-    getallposts()
     getallusers()
-  }, [])
-
+  }, [handleLike])
+useEffect(()=>{
+  getallposts()
+},[handleLike])
   
   return (
     <>
@@ -326,7 +327,7 @@ function Userprofilepage() {
 
   </div>
   <div className='dashcomment-content ms-2'>
-    <div className='commentlistbox'>
+    <div className='commentlistbox' style={{height:'30%'}}>
     {selectedPostcomments && selectedPostcomments.length > 0 ? (
 selectedPostcomments.map((comment) => (
         <div key={comment._id}>

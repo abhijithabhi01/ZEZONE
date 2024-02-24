@@ -40,9 +40,9 @@ function Homeessential() {
   
           <Dropdown>
         <Dropdown.Toggle  id="dropdown-basic"  style={{position:'fixed',zIndex:'10',background:'transparent',marginTop:'-10px'}}>
-        <button type='button' className='btn' ><i class="fa-solid fa-bars fa-2xl text-light bg-primary" 
-     
-    ></i></button>
+        <button type='button' className='btn' >
+          <i class="fa-solid fa-bars fa-2xl text-light bg-primary" ></i>
+          </button>
         </Dropdown.Toggle>
   
   

@@ -29,7 +29,7 @@ function HomeNavbar({isNavbarVisible}) {
 
   const handleInputBlur = () => {
     setIsInputFocused(false);
-   
+    setsearchuser("");
   };
 
 
@@ -75,7 +75,7 @@ useEffect(()=>{
   
   :<div className="navbar d-flex justify-content-between p-1 bg-primary">
     <div className='closebtn ms-5 mt-2 mb-4 fs-1 rounded' style={{backgroundColor:'white',display:isInputFocused?'block':'none'}}>  <button className='btn text-danger fs-3' onClick={handleClose}>
-         <i class="fa-solid fa-x fa-beat"></i>
+         <i class="fa-solid fa-x"></i>
         </button> </div>    
      <div className='nav1'>
          {token?  <div className='profile-btn ms-2 mb-4' style={{display:isInputFocused?'none':'block'}}>
@@ -100,12 +100,16 @@ useEffect(()=>{
         <Dropdown>
       <Dropdown.Toggle style={{background:'transparent'}} id="dropdown-basic">
         
-<input type="text" name="text" class="searchinput" 
-onChange={(e)=>setsearchuser(e.target.value)} 
-value={setsearchuser.searchuser}
-placeholder="Search User"
-onFocus={handleInputFocus}
-onBlur={handleInputBlur}></input>
+      <input
+          type="text"
+          name="text"
+          className="searchinput"
+          onChange={(e) => setsearchuser(e.target.value)}
+          value={searchuser}
+          placeholder="Search User"
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+        />
       </Dropdown.Toggle>
 
       <Dropdown.Menu className='mt-2 text-center text-light' style={{display:searchuser?'block':'none',height:'85vh',width:'300px',backgroundColor:'grey',overflow:'scroll',scrollbarWidth:'none'}}>
