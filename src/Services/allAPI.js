@@ -46,7 +46,7 @@ export const deletepostAPI = async(postId,reqHeader)=>{
 
 // edit profile api
 export const editProfileAPI = async(reqBody,reqHeader)=>{
-    return await commonAPI("PUT",`${BASE_URL}/user/edit`,reqBody,reqHeader)
+    return await commonAPI("PUT",`${BASE_URL}/user/edit/`,reqBody,reqHeader)
 }
 
 //delete post api
@@ -54,12 +54,27 @@ export const deleteuserAPI = async(userId,reqHeader)=>{
     return await commonAPI("DELETE",`${BASE_URL}/user/delete/${userId}`,{},reqHeader)
 }
 
-//likepost
-export const likepostAPI = async(postId,reqHeader)=>{
-    return await commonAPI("POST",`${BASE_URL}/userposts/like/${postId}`,reqHeader)
+// Like a post
+export const likepostAPI = async (postId, reqHeader) => {
+    return await commonAPI("PUT",`${BASE_URL}/userpost/like/${postId}`,{},reqHeader)
 }
 
-//dislikepost
-export const dislikepostAPI = async(postId,reqHeader,reqBody)=>{
-    return await commonAPI("POST",`${BASE_URL}/userposts/dislike/${postId}`,{},reqHeader)
+//add comment
+export const addcommentAPI = async(postId, reqBody, reqHeader)=>{
+    return await commonAPI("POST",`${BASE_URL}/userpost/addcomment/${postId}`,reqBody,reqHeader)
+}
+
+//delete a comment
+export const deleteacommentAPI = async(reqBody,reqHeader)=>{
+    return await commonAPI("DELETE",`${BASE_URL}/userpost/deletecomment`,reqBody,reqHeader)
+}
+
+//delete a comment
+export const deleteusrcommentAPI = async(reqBody,reqHeader)=>{
+    return await commonAPI("DELETE",`${BASE_URL}/userpost/deleteusrcomment`,reqBody,reqHeader)
+}
+
+// follow user
+export const followauserAPI = async (usrid, reqHeader) => {
+    return await commonAPI("PUT",`${BASE_URL}/user/follow/${usrid}`,{},reqHeader)
 }

@@ -9,7 +9,18 @@
   border: 5px solid white;
   border-radius: 50px;
 }
+.usrbiodiv{
+  max-width: 500px;
+  contain: content;
+  overflow: scroll;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .division-profiledetails{
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,8 +124,7 @@ text-align: center;
 /*  user home*/ /*  user home*/  /*  user home*/
  
  .div-userhome {
-  max-width: 100%;
-  
+
   padding: 20px;
   margin: 0px;
   box-sizing: border-box;
@@ -164,9 +174,7 @@ text-align: center;
    
 }
 
- .div-userpost:hover{
-  background-color: rgb(62, 60, 60);
-} 
+
 
 .comment-box {   
 
@@ -181,12 +189,25 @@ position: absolute;
 top: 50px;
 
 }
-
+.dashcomment-boxxx{   
+  margin-top: -20px;
+  margin-left: px;
+  font-size: 1.2rem;
+  contain: content;
+  display: none;
+  width: 100%;
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  }
 .comment-paragraph {
-width: 96%;
+width: 100%;
+color: black;
 border: 1px solid #ccc;
 background-color: white;
-font-size: 1rem;
+font-size: 1.5rem;
+font-weight: 500;
 padding: 10px;
 margin: 5px;
 border-radius: 5px;
@@ -194,7 +215,12 @@ overflow: hidden;
 
 }
 
-
+.commentlistboxxx{
+  height: 450px;  
+  position: relative;
+  overflow:scroll;
+  scrollbar-width: none;
+}
 
  @media screen and (min-width: 768px) {
   .div-userpost{
@@ -258,8 +284,9 @@ overflow: hidden;
 
 .comment-content {
      height: 78%;  
-     position: relative;    
+     position: relative;       
 }
+
 .navbar{
   border: 3px solid white;
   border-radius: 5px;
@@ -297,5 +324,177 @@ bottom: 0;
   width: 300px;  
   border-radius: 5px;
   contain: content;
+}
+
+.comment-paragraph {
+  width: 100%;
+  color: black;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  
+  }
+  
+
+ 
+.messageBox {
+  width:97%;
+font-size: 1.2rem;
+font-weight: bold;
+outline: none;
+position: absolute;
+bottom: 0px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2d2d2d;
+  padding: 0 15px;
+  border-radius: 10px;
+  border: 1px solid rgb(63, 63, 63);
+}
+.messageBox:focus-within {
+  border: 1px solid rgb(110, 110, 110);
+}
+#messageInput {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  color: white;
+}
+
+#sendButton {
+  width: fit-content;
+  height: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  
+}
+.dashcomment-boxxx{
+height: 580px;
+margin-top: -100px;
+margin-left: -16px;
+
+font-size: 1.2rem;
+contain: content;
+display: none;
+width: 100%;
+display: flex;
+flex-direction: column;
+position: absolute;
+top: 30px;
+
+}
+@media (max-width: 470px) {
+  .dashcomment-box{
+      margin-left: -4%;
+      margin-top: -16%;
+      }
+}
+.wrapper {
+  margin-top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fff;
+  left: 15%;
+  transform-origin: 50%;
+  animation: circle7124 .5s alternate infinite ease;
+}
+
+@keyframes circle7124 {
+  0% {
+    top: 60px;
+    height: 5px;
+    border-radius: 50px 50px 25px 25px;
+    transform: scaleX(1.7);
+  }
+
+  40% {
+    height: 20px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+.circle:nth-child(2) {
+  left: 45%;
+  animation-delay: .2s;
+}
+
+.circle:nth-child(3) {
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
+}
+
+.shadow {
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 62px;
+  transform-origin: 50%;
+  z-index: -1;
+  left: 15%;
+  filter: blur(1px);
+  animation: shadow046 .5s alternate infinite ease;
+}
+
+@keyframes shadow046 {
+  0% {
+    transform: scaleX(1.5);
+  }
+
+  40% {
+    transform: scaleX(1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: scaleX(.2);
+    opacity: .4;
+  }
+}
+
+.shadow:nth-child(4) {
+  left: 45%;
+  animation-delay: .2s
+}
+
+.shadow:nth-child(5) {
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
 }
 

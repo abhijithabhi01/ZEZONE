@@ -4,7 +4,7 @@ import './style2.css'
 import AddPost from './AddPost';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { editProfileAPI, getuserprofileAPI } from '../Services/allAPI';
+import { addcommentAPI, deleteacommentAPI, deleteusrcommentAPI, editProfileAPI, getallusersAPI, getuserprofileAPI } from '../Services/allAPI';
 import { BASE_URL } from '../Services/baseurl';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Editpost from './Editpost';
@@ -18,35 +18,48 @@ const [show, setShow] = useState(false);
 const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 
-
-
+const [showComments, setShowComments] = useState(false);
+   
+const [showCommentsForPost, setShowCommentsForPost] = useState({});
 
 const handleprofileShow = () => setShow(true);
 
-
+const [usertodisplay,setusertodisplay] = useState([])
 const [userposts,setuserPosts] = useState([])
 const [isupdate,setisUpdate] =useState(false)
-
+const [curruser,setcurruser] = useState([])
 
 const[usrprofile,setUsrprofile] = useState({
+  userId:"",
   username:"",
   bio:"",
-  profileimage:""
+  profileimage:"",
+  followers:[]
 })
 const [existingImage,setexistingImage] = useState("")
+const [selectedUser, setSelectedUser] = useState([]);
+const [selectedUserfollowers, setSelectedUserfollowers] = useState();
 
 const [preview, setpreview] = useState("")
-
-
+const [takecomment,setComment] = useState({
+  comment:""
+})
   // State to manage selected post image and modal visibility
+  const [selectedPostid, setSelectedPostid] = useState('');
   const [selectedPostImage, setSelectedPostImage] = useState('');
   const [selectedPostcaption, setSelectedPostcaption] = useState('');
+  const [selectedPostlikes, setSelectedPostlikes] = useState([]);
+  const [selectedPostcomments, setSelectedPostcomments] = useState([]);
+
   const [modalShow, setModalShow] = useState(false);
 
   // Function to handle post image click and show modal
   const handlePostImageClick = (item) => {
+    setSelectedPostid(item._id);
     setSelectedPostImage(item.postimage);
     setSelectedPostcaption(item.caption);
+    setSelectedPostlikes(item.likes);
+    setSelectedPostcomments(item.comments);
     setModalShow(true);
   };
 
@@ -54,17 +67,25 @@ const [preview, setpreview] = useState("")
   const handleModalClose = () => {
     setModalShow(false);
     setSelectedPostImage(''); 
+  
   };
 
-
+  const toggleComments = (postId) => {
+    setShowComments(!showComments);
+    setShowCommentsForPost((prev) => ({
+      ...prev,
+      [postId]: !prev[postId],
+    }));
+  };
 
 
 useEffect(()=>{
   const user = JSON.parse(sessionStorage.getItem('existingUser'))
- // console.log(`existing user`,user);
-   setUsrprofile({...usrprofile,username:user.username,bio:user.bio,profileimage:""})
+  //console.log(`existing user`,user);
+   setUsrprofile({...usrprofile,userId:user._id,username:user.username,bio:user.bio,profileimage:"",followers:user.followers})
    setexistingImage(user.profileimage)
   },[isupdate])
+
   useEffect(() => {
     if (usrprofile.profileimage) {
      
@@ -75,8 +96,7 @@ useEffect(()=>{
       setpreview("")
     }
   }, [usrprofile.profileimage])
-  // console.log(usrprofile);
-//get user posts
+
 const getuserposts = async()=>{
   if(sessionStorage.getItem('token')){
  const token = sessionStorage.getItem('token')
@@ -86,15 +106,26 @@ const getuserposts = async()=>{
  }
  
  const result = await getuserprofileAPI(reqHeader)
+ 
  if(result.status===200){
 setuserPosts(result.data)
 //console.log(result.data);
  }
+ const finduser = await getallusersAPI(reqHeader)
+ if(finduser.status===200){
+  setusertodisplay(finduser.data)
+  //console.log(finduser.data);
+   }
   }
 }
+//console.log(usertodisplay);
+
+
+ 
 
 useEffect(()=>{
   getuserposts()
+
 },[])
 const handlepClose = () => {
   setUsrprofile({
@@ -102,6 +133,7 @@ const handlepClose = () => {
   profileimage:""
   })
   setShow(false);}
+
 //edit profile
 const handleeditprofile = async()=>{
   const{username,bio,profileimage} = usrprofile
@@ -152,7 +184,7 @@ const handleeditprofile = async()=>{
   }
   }
   }
-  //console.log(usrprofile);
+
  const handleprofileClose = () => {
   setShow(false);
   setpreview("")
@@ -163,7 +195,63 @@ const handleeditprofile = async()=>{
   })
 }
 }
+const handleComment = async (postId) => {
+  const { comment } = takecomment;
+if(!comment){
+  toast.info(`Something is missing`)
+}
+  else{
+    try {
+    const token = sessionStorage.getItem('token');
+    const reqHeader = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
 
+    const reqBody = { comment }; 
+
+    const result = await addcommentAPI(postId, reqBody, reqHeader);
+
+    if (result.status === 200) {
+      toast.success('Comment added successfully');
+      //console.log(result);
+      setComment({
+        comment:""
+       })
+    } else {
+      toast.error('Failed to add comment');
+      console.log(result);
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error('Failed to add comment. Please try again.');
+  }}
+};
+const handledeletecomment =async(postId, commentId)=>{
+ 
+  //console.log(commentId,postId);
+  const token = sessionStorage.getItem("token")
+        const reqHeader ={
+          "Content-Type":"application/json",
+          "Authorization":`Bearer ${token}`
+      } 
+      const reqBody = new FormData()
+      reqBody.append("postId",postId)
+      reqBody.append("commentId",commentId)
+      const result = await deleteusrcommentAPI(reqBody,reqHeader)
+      if(result.status===200){
+        toast.error('comment deleted')
+      }
+      else if(result.status===404){
+        toast.error('something went wrong')
+      }
+      else{
+      toast.error(result.response.data)
+      }
+}
+
+
+//console.log(usrprofile);
   return (
     <div className='bg-primary'> 
      <div className='p-3'>
@@ -236,10 +324,20 @@ const handleeditprofile = async()=>{
 
 
 
-          <div className='col-lg-6 col-md-6 col-sm-12 division-profiledetails'>
-         
-            <h2>{usrprofile.username}</h2>
-                <h4>{usrprofile.bio}</h4>
+          <div className='col-lg-6 col-md-6 col-sm-12 division-profiledetails' >
+         <div className='usrbiodiv'>
+           
+              <h2>{usrprofile.username}</h2>
+                  <h4>{usrprofile.bio}</h4>
+         </div>
+                <div className='d-flex pffdiv'>
+              <div className='pffpostdiv'> <h5 className='text-light text-center'>{userposts.length}</h5>
+                <h5 className='text-light '>posts</h5></div>
+               <div className='m-3'> 
+               <h5 className='text-light text-center'>{usrprofile.followers.length}</h5>
+                <h5 className='text-light'>Followers</h5></div>
+               
+              </div>
           </div>
         </div>
      </div>
@@ -280,28 +378,93 @@ const handleeditprofile = async()=>{
         <ToastContainer position='top-right' autoClose={1500} theme='colored' />
 
 
-        <Modal show={modalShow} onHide={handleModalClose} centered>
-        <Modal.Header closeButton>
-        
+
+{/* modal */}
+        <Modal show={modalShow} onHide={handleModalClose} centered key={selectedPostid} >
+        <Modal.Header className='d-flex justify-content-end'>
+
+          {!showCommentsForPost[selectedPostid] &&
+            <div >
+
+              <button onClick={handleModalClose} className="btn fs-2 btn-danger " style={{ background: 'none' }}>
+                <i className="fa-solid fa-x text-danger"></i>
+              </button>
+            </div>
+          }
         </Modal.Header>
         <Modal.Body className='bg-primary'>
-          <div className=''>
+          <div className={`pdivfirst-content p-2 ${showCommentsForPost[selectedPostid] ? 'hidden' : ''}`} style={{ opacity: showCommentsForPost[selectedPostid] ? '0' : '1' }}>
 
             <div className='addpost-modal text-center bg-dark' >
-            
-            <img
-className='addpostimg img-fluid'
-src={selectedPostImage ? `${BASE_URL}/UserPosts/${selectedPostImage}` : ''}
-alt='Selected Post'
-/>
+
+              <img
+                className='addpostimg img-fluid'
+                src={selectedPostImage ? `${BASE_URL}/UserPosts/${selectedPostImage}` : ''}
+                alt='Selected Post'
+              />
             </div>
           </div>
+
+          {showCommentsForPost[selectedPostid] && (
+
+<div className='dashcomment-boxxx bg-primary'>
+  <div className='d-flex justify-content-between m-2' >
+    <h1 className='text-light'>Comments</h1>
+    <button onClick={() => toggleComments(selectedPostid)} className="btn fs-2 btn-danger btn-rounded me-3 " style={{ background: 'none' }}>
+      <i className="fa-solid fa-x text-danger"></i>
+    </button>
+
+  </div>
+  <div className='dashcomment-content ms-2'>
+    <div className='commentlistboxxx'>
+    {selectedPostcomments && selectedPostcomments.length > 0 ? (
+selectedPostcomments.map((comment) => (
+        <div key={comment._id}>
+          <h5 className='text-light'>{comment.username}</h5>
+          <div className='d-flex justify-content-between'>
+            <p className='comment-paragraph'>{comment.comment}</p>
+            <button onClick={(e)=>handledeletecomment(selectedPostid,comment._id)} type='button' className="btn fs-2 btn-danger btn-rounded me-5" style={{background:'none'}}>
+<i className="fa-solid fa-trash fa-sm text-danger"></i>
+</button>
+          </div>
+        </div>
+
+      ))) : <h2 className='text-light mt-5'>No Comments uploaded yet</h2>
+      }
+
+    </div>
+    <div className="messageBox mb-2 ">
+
+<input placeholder="reply here" type="text" id="messageInput" onChange={(e) => setComment({ ...takecomment, comment: e.target.value })} />
+<button id="sendButton" onClick={(e)=>handleComment(selectedPostid)}>
+<i class="fa-solid text-light fa-paper-plane fa-xl "></i>  </button>
+</div>
+  </div>
+</div>
+)}
         </Modal.Body>
-       <div className='m-3'>
-         
-            <h4  className="text-left">{selectedPostcaption}</h4>
+ 
+        {!showCommentsForPost[selectedPostid] &&  <div className='m-3'>
+         <div>
+         <button
+              type="button"
+              className={`like ms-2 fs-2 `}
+              style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+              >
+              <i className="fa-solid fa-heart" style={{ color: '#ff0000' }}></i> </button>
+
+              <button onClick={() => toggleComments(selectedPostid)} className='btn comment-btn' style={{ marginTop: '-2.3%' }}>
+  <i className="fa-regular fa-comment fa-2xl text-primary"></i>
+</button>
+         </div>
+         <h4 className='ms-4 text-left' style={{ overflow: 'hidden',color:'black' }}>{selectedPostlikes ?selectedPostlikes.length : 0}<span>likes</span></h4>
           
-       </div>
+            <h4  className="text-left">{selectedPostcaption}</h4>
+           
+          
+       </div>}
+       
+    
       </Modal>
     </div>
     

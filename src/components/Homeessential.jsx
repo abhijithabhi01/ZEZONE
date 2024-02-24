@@ -439,8 +439,8 @@ function Homeessential() {
 <section id='register'>
      <div className='division-four'>
         <div className='p-5'>
-          <div className='div-four-inn m-1 p-2 mt-5'><h5>A New Way To Connect With World</h5></div>
-          <div className='div-four-inn m-1 p-2 mt-1'><h1>Start Using Today<br></br>Create New Account Now</h1></div>
+          <div className='div-four-inn m-1 p-2 mt-5'><h5 className='text-light'>A New Way To Connect With World</h5></div>
+          <div className='div-four-inn m-1 p-2 mt-1 '><h1 className='text-light'>Start Using Today<br></br>Create New Account Now</h1></div>
           <div className='m-1 p-2'> <button className='startButton btn text-right btn-secondary rounded'><Link className='text-decoration-none' to={'/register'}>Create</Link></button>
     </div>
         </div>

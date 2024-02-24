@@ -3,7 +3,7 @@ import HomeNavbar from '../components/HomeNavbar'
 import Homeessential from '../components/Homeessential'
 import './homestyle.css'
 import UserHome from '../components/UserHome';
-
+import bckimg from '../Assests/simon-lee-zft-W1kVEhg-unsplash.jpg'
 function Home() {
   const[token,setToken] = useState(false)
 
@@ -14,14 +14,18 @@ function Home() {
   })
   return (
     <>
-  { !token? <div className="main-home"  style={{height:"100vh"}}>
-    
-     <Homeessential/>
-    </div>
-    :<div  style={{height:"100vh"}}>
-      <UserHome/>
-    :</div>
-   }
+ <div>
+    { !token? <div className="main-home" style={{
+      backgroundImage:`url(${bckimg})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundAttachment:'fixed',scrollBehavior:'smooth'
+    }}>
+      
+       <Homeessential/>
+      </div>
+      :<div>
+        <UserHome/>
+      </div>
+     }
+ </div>
     </>
   )
 }
